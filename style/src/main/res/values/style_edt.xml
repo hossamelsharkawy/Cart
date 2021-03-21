@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="edt_style" parent="AppTheme">
+        <item name="android:textColor">@color/appFontDark</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_marginTop">@dimen/c_margin</item>
+        <item name="android:layout_marginBottom">@dimen/c_margin</item>
+        <item name="android:textSize">@dimen/font_size</item>
+        <item name="android:paddingBottom">@dimen/c_padding_min</item>
+        <item name="android:gravity">center|start</item>
+        <item name="android:paddingTop">@dimen/c_padding_xx</item>
+        <item name="android:paddingEnd">@dimen/c_padding_xx</item>
+        <item name="android:drawablePadding">@dimen/c_padding_x</item>
+        <item name="android:paddingStart">@dimen/c_padding_x</item>
+        <item name="android:inputType">textMultiLine</item>
+        <item name="android:lineSpacingExtra">1dp</item>
+        <item name="android:maxLength">255</item>
+
+    </style>
+
+
+    <style name="editTextStyle" parent="edt_style">
+        <item name="android:background">@drawable/selector_gray_line_edit</item>
+    </style>
+
+    <style name="editTextLightStyle" parent="edt_style">
+        <item name="android:fontFamily">@font/lato_light</item>
+    </style>
+
+    <style name="inputStyle" parent="AppTheme">
+        <item name="android:textColor">@color/appFontDark</item>
+        <item name="android:layout_height">@dimen/_40sdp</item>
+        <item name="android:minHeight">@dimen/_40sdp</item>
+        <item name="android:paddingStart">@dimen/c_padding</item>
+        <item name="android:paddingEnd">@dimen/c_padding</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:paddingBottom">@dimen/c_padding_min</item>
+        <item name="android:drawablePadding">@dimen/c_padding_x</item>
+        <item name="android:textDirection">locale</item>
+
+        <item name="android:lineSpacingMultiplier">0.9</item>
+        <item name="android:background">@drawable/selector_gray_line_edit</item>
+        <item name="android:inputType">textMultiLine</item>
+        <item name="android:gravity">start|center_vertical</item>
+    </style>
+
+    <style name="inputStyleEdit" parent="inputStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:textColor">@color/appFontDark</item>
+        <item name="android:background">@drawable/line_bottom</item>
+        <item name="android:imeOptions">actionNext</item>
+
+    </style>
+
+    <style name="inputStyleEditSelector" parent="inputStyleEdit">
+        <item name="android:drawableEnd">@drawable/ic_arrow_right</item>
+        <item name="android:focusable">false</item>
+    </style>
+
+
+    <style name="editTextStyle2" parent="edt_style">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:gravity">center|start</item>
+        <item name="android:textSize">@dimen/font_size</item>
+    </style>
+
+
+</resources>

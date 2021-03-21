@@ -1,0 +1,15 @@
+https://mockapi.io/projects/6050b3c75346090017670487
+
+https://6050b3c75346090017670486.mockapi.io/Procuct
+
+{
+"id": "6",
+"createdAt": 1615901548,
+"title": "title 6",
+"image": "image 6",
+"categoryId": "categoryId 6",
+"price": "price 6",
+"has_discount": "has_discount 6",
+"price_after_discount": "price_after_discount 6"
+}
+

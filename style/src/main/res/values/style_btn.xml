@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <style name="btn_style" parent="Base.Widget.AppCompat.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_height">@dimen/_40sdp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:padding">@dimen/c_padding</item>
+        <item name="android:textSize">@dimen/title_size</item>
+        <item name="android:gravity">center</item>
+        <item name="android:elevation">@dimen/_5sdp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:layout_marginTop">@dimen/c_margin</item>
+    </style>
+
+
+    <style name="btn_base_style" parent="btn_style">
+        <item name="android:background">@drawable/btn_base_corner</item>
+    </style>
+
+
+
+    <style name="btn_gray_style" parent="btn_style">
+        <item name="android:background">@drawable/btn_gray</item>
+    </style>
+
+
+    <style name="btn_back_toolbar" parent="ic_toolbar">
+        <item name="android:src">@drawable/ic_back_white</item>
+    </style>
+
+    <style name="btn_search_toolbar" parent="ic_toolbar">
+        <item name="android:src">@drawable/ic_search_gray</item>
+    </style>
+
+    <style name="ic_toolbar" parent="AppTheme">
+        <item name="android:layout_width">@dimen/imgWH_xx</item>
+        <item name="android:layout_height">@dimen/toolBar_height</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:scaleType">centerInside</item>
+    </style>
+
+    <style name="btn_close_toolbar_black" parent="AppTheme">
+        <item name="android:layout_width">@dimen/imgWH_xxxxx</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:background">@color/transparent</item>
+        <item name="android:padding">@dimen/c_padding_xxx</item>
+
+        <item name="android:src">@drawable/ic_close</item>
+    </style>
+
+
+    <style name="btn_save_style" parent="btn_style">
+        <item name="android:textColor">@color/white</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="android:padding">@dimen/c_padding</item>
+        <item name="android:textSize">@dimen/title_size</item>
+        <item name="android:gravity">center</item>
+        <item name="android:elevation">@dimen/_5sdp</item>
+        <item name="android:insetTop">@dimen/_5sdp</item>
+        <item name="android:insetRight">@dimen/container_padding</item>
+        <item name="android:insetLeft">@dimen/container_padding</item>
+        <item name="android:theme">@style/Theme.MaterialComponents</item>
+        <item name="android:insetBottom">@dimen/_5sdp</item>
+        <item name="cornerRadius">@dimen/_5sdp</item>
+        <item name="strokeColor">@color/gray_xx</item>
+        <item name="strokeWidth">0.5dp</item>
+    </style>
+
+
+</resources>

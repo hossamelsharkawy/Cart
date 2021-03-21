@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="appBarTextSize">@dimen/xxxxxx_size</dimen>
+    <dimen name="container_padding">@dimen/c_padding_xx</dimen>
+    <dimen name="container_padding2">@dimen/c_padding_xxx</dimen>
+    <dimen name="container_padding3">@dimen/c_padding_xxxx</dimen>
+    <dimen name="container_home_padding">@dimen/_11sdp</dimen>
+
+    <dimen name="height_item_list">@dimen/_55sdp</dimen>
+    <dimen name="task_tab_margin">@dimen/_7sdp</dimen>
+    <dimen name="task_tab_height">@dimen/_30sdp</dimen>
+    <dimen name="tab_width">@dimen/_75sdp</dimen>
+
+    <dimen name="cf_ValueHeight">@dimen/_50sdp</dimen>
+    <dimen name="ed_ValueHeight">@dimen/_35sdp</dimen>
+
+    <dimen name="appTextSize">@dimen/x_size</dimen>
+
+    <dimen name="title_size">@dimen/xxxxx_size</dimen>
+    <dimen name="title_size3">@dimen/_11ssp</dimen>
+    <dimen name="font_size">@dimen/xx_size</dimen>
+    <dimen name="smallSize">@dimen/_size</dimen>
+    <dimen name="title_size4">@dimen/_20ssp</dimen>
+    <dimen name="title_size5">@dimen/_13ssp</dimen>
+
+    <!--base -->
+
+
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <dimen name="toolBar_height">@dimen/_45sdp</dimen>
+    <dimen name="toolBar_height_mini">@dimen/_40sdp</dimen>
+    <dimen name="toolBar_height_mini_x">@dimen/_35sdp</dimen>
+
+
+    <dimen name="logo_w_h">@dimen/_80sdp</dimen>
+    <dimen name="logo_w_h_xx">@dimen/_85sdp</dimen>
+    <dimen name="logo_w_h_xxx">@dimen/_90sdp</dimen>
+    <dimen name="logo_w_h_xxxx">@dimen/_95sdp</dimen>
+    <dimen name="logo_w_h_xxxxx">@dimen/_105sdp</dimen>
+    <dimen name="logo_w_h_xxxxxx">@dimen/_110sdp</dimen>
+    <dimen name="logo_w_h_xxxxxxx">@dimen/_115sdp</dimen>
+    <dimen name="logo_w_h_xxxxxxxx">@dimen/_120sdp</dimen>
+    <dimen name="logo_w_h_xxxxxxxxx">@dimen/_125sdp</dimen>
+    <dimen name="logo_w_h_xxxxxxxxxx">@dimen/_200sdp</dimen>
+    <dimen name="logo_w_h_xxxxxxxxxxx">@dimen/_250sdp</dimen>
+    <dimen name="logo_w_h_xxxxxxxxxxxx">@dimen/_270sdp</dimen>
+
+
+    <dimen name="textBox_w_h">@dimen/_150sdp</dimen>
+    <dimen name="textBox_w_h_x">@dimen/_200sdp</dimen>
+    <dimen name="textBox_w_h_xx">@dimen/_250sdp</dimen>
+    <dimen name="textBox_w_h_xxx">@dimen/_270sdp</dimen>
+    <dimen name="textBox_w_h_xxxx">@dimen/_370sdp</dimen>
+    <dimen name="textBox_w_h_xxxxx">@dimen/_350sdp</dimen>
+    <dimen name="textBox_w_h_xxxxxx">@dimen/_400sdp</dimen>
+    <dimen name="textBox_w_h_xxxxxxx">@dimen/_450sdp</dimen>
+
+
+    <dimen name="btn_w_h">@dimen/_25sdp</dimen>
+    <dimen name="btn_w_h_x">@dimen/_30sdp</dimen>
+    <dimen name="btn_w_h_xx">@dimen/_35sdp</dimen>
+    <dimen name="btn_w_h_xxx">@dimen/_40sdp</dimen>
+    <dimen name="btn_w_h_xxxx">@dimen/_55sdp</dimen>
+    <dimen name="btn_w_h_xxxxx">@dimen/_60sdp</dimen>
+    <dimen name="btn_w_h_xxxxxx">@dimen/_65sdp</dimen>
+    <dimen name="btn_w_h_xxxxxxx">@dimen/_70sdp</dimen>
+    <dimen name="btn_w_h_xxxxxxxx">@dimen/_75sdp</dimen>
+    <dimen name="btn_w_h_xxxxxxxxx">@dimen/_80sdp</dimen>
+    <dimen name="btn_w_h_xxxxxxxxxx">@dimen/_85sdp</dimen>
+    <dimen name="btn_w_h_xxxxxxxxxxx">@dimen/_90sdp</dimen>
+    <dimen name="btn_w_h_xxxxxxxxxxxx">@dimen/_95sdp</dimen>
+    <dimen name="btn_w_h_xxxxxxxxxxxxx">@dimen/_100sdp</dimen>
+    <dimen name="btn_w_h_xxxxxxxxxxxxxx">@dimen/_105sdp</dimen>
+    <dimen name="btn_w_h_xxxxxxxxxxxxxxx">@dimen/_110sdp</dimen>
+    <dimen name="btn_w_h_xxxxxxxxxxxxxxxx">@dimen/_115sdp</dimen>
+    <dimen name="btn_w_h_xxxxxxxxxxxxxxxxx">@dimen/_120sdp</dimen>
+    <dimen name="btn_w_h_xxxxxxxxxxxxxxxxxx">@dimen/_125sdp</dimen>
+
+
+    <dimen name="c_margin">@dimen/_5sdp</dimen>
+    <dimen name="c_margin_min">@dimen/_2sdp</dimen>
+    <dimen name="c_marginTop_min">-15dp</dimen>
+    <dimen name="c_marginTop">@dimen/_10sdp</dimen>
+    <dimen name="c_marginTop_x">@dimen/_15sdp</dimen>
+    <dimen name="c_marginTop_xx">@dimen/_20sdp</dimen>
+    <dimen name="c_marginTop_xxx">@dimen/_33sdp</dimen>
+    <dimen name="c_marginTop_xxxx">@dimen/_40sdp</dimen>
+    <dimen name="c_marginTop_xxxxx">@dimen/_50sdp</dimen>
+    <dimen name="c_marginTop_xxxxxx">@dimen/_60sdp</dimen>
+    <dimen name="c_marginTop_xxxxxxx">@dimen/_70sdp</dimen>
+    <dimen name="c_marginTop_xxxxxxxx">@dimen/_80sdp</dimen>
+    <dimen name="c_marginTop_xxxxxxxxx">@dimen/_85sdp</dimen>
+    <dimen name="c_marginTop_xxxxxxxxxx">@dimen/_90sdp</dimen>
+    <dimen name="c_marginTop_xxxxxxxxxxx">@dimen/_100sdp</dimen>
+    <dimen name="c_marginTop_xxxxxxxxxxxx">@dimen/_110sdp</dimen>
+    <dimen name="c_marginTop_xxxxxxxxxxxxx">@dimen/_115sdp</dimen>
+    <dimen name="c_marginTop_xxxxxxxxxxxxxx">@dimen/_120sdp</dimen>
+
+
+    <dimen name="edt_w_h">@dimen/_20sdp</dimen>
+    <dimen name="edt_w_h_x">@dimen/_25sdp</dimen>
+    <dimen name="edt_w_h_xx">@dimen/_35sdp</dimen>
+    <dimen name="edt_w_h_xxx">@dimen/_40sdp</dimen>
+    <dimen name="edt_w_h_xxxx">@dimen/_50sdp</dimen>
+    <dimen name="edt_w_h_xxxxx">@dimen/_70sdp</dimen>
+    <dimen name="edt_w_h_xxxxxx">@dimen/_100sdp</dimen>
+    <dimen name="edt_w_h_xxxxxxx">@dimen/_130sdp</dimen>
+    <dimen name="edt_w_h_xxxxxxxx">@dimen/_170sdp</dimen>
+    <dimen name="edt_w_h_xxxxxxxxx">@dimen/_175sdp</dimen>
+    <dimen name="edt_w_h_xxxxxxxxxx">@dimen/_180sdp</dimen>
+    <dimen name="edt_w_h_xxxxxxxxxxx">@dimen/_185sdp</dimen>
+    <dimen name="edt_w_h_xxxxxxxxxxxx">@dimen/_190sdp</dimen>
+
+
+    <dimen name="c_padding_min">@dimen/_2sdp</dimen>
+    <dimen name="c_padding">@dimen/_5sdp</dimen>
+    <dimen name="c_padding_x">@dimen/_8sdp</dimen>
+    <dimen name="c_padding_xx">@dimen/_10sdp</dimen>
+    <dimen name="c_padding_xxx">@dimen/_15sdp</dimen>
+    <dimen name="c_padding_xxxx">@dimen/_20sdp</dimen>
+    <dimen name="c_padding_xxxxx">@dimen/_30sdp</dimen>
+    <dimen name="c_padding_xxxxxx">@dimen/_40sdp</dimen>
+    <dimen name="c_padding_xxxxxxx">@dimen/_60sdp</dimen>
+    <dimen name="c_padding_img">@dimen/_14sdp</dimen>
+    <dimen name="c_padding_img2">@dimen/_16sdp</dimen>
+
+
+    <dimen name="imgWH">@dimen/_15sdp</dimen>
+    <dimen name="imgWH_x">@dimen/_20sdp</dimen>
+    <dimen name="imgWH_xx">@dimen/_25sdp</dimen>
+    <dimen name="imgWH_xxx">@dimen/_30sdp</dimen>
+    <dimen name="imgWH_xxxx">@dimen/_35sdp</dimen>
+    <dimen name="imgWH_xxxxx">@dimen/_40sdp</dimen>
+    <dimen name="imgWH_xxxxxx">@dimen/_50sdp</dimen>
+    <dimen name="imgWH_xxxxxxx">@dimen/_60sdp</dimen>
+    <dimen name="imgWH_xxxxxxxx">@dimen/_70sdp</dimen>
+    <dimen name="imgWH_xxxxxxxxx">@dimen/_75sdp</dimen>
+    <dimen name="imgWH_xxxxxxxxxx">@dimen/_80sdp</dimen>
+    <dimen name="imgWH_xxxxxxxxxxx">@dimen/_85sdp</dimen>
+    <dimen name="imgWH_xxxxxxxxxxxx">@dimen/_90sdp</dimen>
+
+
+    <dimen name="_size">@dimen/_7ssp</dimen>
+    <dimen name="x_size">@dimen/_8ssp</dimen>
+    <dimen name="xx_size">@dimen/_9ssp</dimen>
+    <dimen name="xxx_size">@dimen/_10ssp</dimen>
+    <dimen name="xxxx_size">@dimen/_11ssp</dimen>
+    <dimen name="xxxxx_size">@dimen/_12ssp</dimen>
+    <dimen name="xxxxxx_size">@dimen/_14ssp</dimen>
+    <dimen name="xxxxxxx_size">@dimen/_15ssp</dimen>
+    <dimen name="xxxxxxxx_size">@dimen/_22ssp</dimen>
+    <dimen name="xxxxxxxxx_size">@dimen/_50ssp</dimen>
+    <dimen name="xxxxxxxxxx_size">@dimen/_60ssp</dimen>
+    <dimen name="xxxxxxxxxxx_size">@dimen/_70ssp</dimen>
+    <dimen name="xxxxxxxxxxxx_size">@dimen/_80ssp</dimen>
+
+
+    <dimen name="row_height_min">@dimen/_30sdp</dimen>
+    <dimen name="row_height">@dimen/_33sdp</dimen>
+    <dimen name="row_height_x">@dimen/_43sdp</dimen>
+    <dimen name="row_height_xx">@dimen/_60sdp</dimen>
+    <dimen name="row_height_xxx">@dimen/_80sdp</dimen>
+    <dimen name="row_height_xxxx">@dimen/_90sdp</dimen>
+    <dimen name="row_height_xxxxx">@dimen/_97sdp</dimen>
+    <dimen name="row_height_xxxxxx">@dimen/_100sdp</dimen>
+
+
+    <dimen name="ic_logo_w_h">@dimen/_40sdp</dimen>
+    <dimen name="ic_logo_w_h_x">@dimen/_50sdp</dimen>
+    <dimen name="ic_logo_w_h_xx">@dimen/_70sdp</dimen>
+    <dimen name="ic_logo_w_h_xxx">@dimen/_100sdp</dimen>
+
+
+    <dimen name="icon_w_h">@dimen/_20sdp</dimen>
+    <dimen name="icon_w_h_x">@dimen/_25sdp</dimen>
+    <dimen name="icon_w_h_xx">@dimen/_30sdp</dimen>
+    <dimen name="icon_w_h_xxx">@dimen/_35sdp</dimen>
+    <dimen name="icon_w_h_xxxx">@dimen/_40sdp</dimen>
+
+
+    <dimen name="elevationValue">@dimen/_2sdp</dimen>
+    <dimen name="elevationValue2">@dimen/_3sdp</dimen>
+    <dimen name="elevationValue3">@dimen/_5sdp</dimen>
+    <dimen name="radiusValue1">@dimen/_3sdp</dimen>
+    <dimen name="radiusValue2">@dimen/_5sdp</dimen>
+    <dimen name="radiusValue3">@dimen/_10sdp</dimen>
+
+
+    <!--
+        <dimen name="design_navigation_icon_size" tools:override="true">@dimen/_20sdp</dimen>
+        <dimen name="design_navigation_icon_padding" tools:override="true">@dimen/_1sdp</dimen>
+        <dimen name="listPreferredItemHeightSmall"  tools:override="true" >@dimen/_45sdp</dimen>
+    -->
+
+    <!--
+        <dimen name="design_bottom_navigation_elevation"  tools:override="true">@dimen/_8sdp</dimen>
+        <dimen name="design_bottom_navigation_shadow_height" tools:override="true">@dimen/_1sdp</dimen>
+        <dimen name="design_bottom_navigation_icon_size" tools:override="true">@dimen/_20sdp</dimen>
+        <dimen name="design_bottom_navigation_height" tools:override="true">@dimen/_45sdp</dimen>
+        <dimen name="design_bottom_navigation_margin" tools:override="true">@dimen/_5sdp</dimen>
+        <dimen name="design_bottom_navigation_active_text_size" tools:override="true">@dimen/x_size</dimen>
+        <dimen name="design_bottom_navigation_item_min_width" tools:override="true">@dimen/_40sdp</dimen>
+        <dimen name="design_bottom_navigation_item_max_width" tools:override="true">@dimen/_96sdp</dimen>
+        <dimen name="design_bottom_navigation_active_item_max_width" tools:override="true">@dimen/_168sdp</dimen>
+        <dimen name="design_bottom_navigation_active_item_min_width" tools:override="true">@dimen/_96sdp</dimen>
+    -->
+
+</resources>

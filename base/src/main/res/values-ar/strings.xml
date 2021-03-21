@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">Base</string>
+    <string name="no_internet_connection">لا يوجد اتصال بالانترنت</string>
+    <string name="invalid_credentials">invalid_credentials</string>
+    <string name="socketTimeout">انتهي وقت الاتتصال</string>
+    <string name="jsonError">ح</string>
+    <string name="connectionError">خطا في الاتصال</string>
+    <string name="serverError">خطأ في الخادم</string>
+    <string name="goExit">اضغط مرة اخري للخروج</string>
+    <string name="dataInProgress">تحميل ..</string>
+    <string name="tryAgain">اعادة تحميل</string>
+    <string name="sign_out">تسجيل خروج</string>
+    <string name="decline">رفض</string>
+    <string name="are_you_sure_to_sign_out">هل تريد الخروج ؟</string>
+    <string name="search">بحث</string>
+
+    <string name="delete">حذف</string>
+    <string name="edit">تعديل</string>
+    <string name="add">إضافة</string>
+
+</resources>

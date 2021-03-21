@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ******************************************************** -->
+
+    <item name="conId" type="id" />
+    <item name="popMenu" type="id" />
+    <item name="container" type="id" />
+    <item name="errorView" type="id" />
+    <item name="loadingView" type="id" />
+    <item name="loading_view" type="id" />
+    <item name="txt_error_msg" type="id" />
+    <item name="btn_tryAgain" type="id" />
+
+    <!-- ******************************************************** -->
+    <item name="img_BackToolBar" type="id" />
+    <item name="img_menuToolBar" type="id" />
+    <item name="txt_titleToolBar" type="id" />
+    <item name="txt_subTitleToolBar" type="id" />
+
+
+
+    <!-- ******************************************************** -->
+    <item name="swipe_rec" type="id" />
+    <item name="rec_main" type="id" />
+
+
+</resources>

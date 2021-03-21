@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="itemClick"
+            type="com.hossamelsharkawy.simplecart.app.features.products.ProductItemClickListener" />
+
+
+        <variable
+            name="item"
+            type="com.hossamelsharkawy.simplecart.data.entities.Product" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="@dimen/_35sdp"
+        android:layout_gravity="center">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_plusQty"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@color/transparent"
+            android:onClick="@{() -> itemClick.onPlusQty(item) }"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/txt_itemCartQty"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/btn_add_back" />
+
+        <TextView
+            android:id="@+id/txt_itemCartQty"
+            style="@style/txt_itemTitle"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{String.valueOf(item.qtyInCart)}"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_plusQty"
+            app:layout_constraintEnd_toStartOf="@+id/btn_plusQty"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/btn_minQty"
+            app:layout_constraintTop_toTopOf="@+id/btn_plusQty" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_minQty"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@color/transparent"
+            android:onClick="@{() -> itemClick.onMinQty(item) }"
+
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/txt_itemCartQty"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/btn_min_back" />
+
+        <androidx.constraintlayout.widget.Group
+            android:id="@+id/group"
+            viewIf="@{item.qtyInCart!=0}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="btn_minQty,btn_plusQty,txt_itemCartQty" />
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_addToCart"
+            style="@style/btn_style"
+            viewIf="@{item.qtyInCart==0}"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_35sdp"
+            android:backgroundTint="@color/colorPrimary"
+
+            android:onClick="@{() -> itemClick.onAddToCart(item) }"
+
+            android:text="@string/addToCart"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

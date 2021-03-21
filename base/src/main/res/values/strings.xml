@@ -1,0 +1,22 @@
+<resources>
+    <string name="app_name">Base</string>
+    <string name="no_internet_connection">no_internet_connection</string>
+    <string name="invalid_credentials">invalid_credentials</string>
+    <string name="socketTimeout">socketTimeout</string>
+    <string name="jsonError">jsonError</string>
+    <string name="connectionError">connectionError</string>
+    <string name="serverError">serverError</string>
+    <string name="goExit">click again to exit.</string>
+    <string name="dataInProgress">Loading ..</string>
+    <string name="tryAgain">Retry</string>
+    <string name="sign_out">Sign out</string>
+    <string name="decline">Decline</string>
+    <string name="are_you_sure_to_sign_out">Are you sure to sign out?</string>
+    <string name="search">Search</string>
+
+
+    <string name="delete">Delete</string>
+    <string name="edit">Edit</string>
+    <string name="add">Add</string>
+
+</resources>

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <color name="colorPrimary">@color/c1</color>
+    <color name="ic_color">#3A322A</color>
+    <color name="ic_colorLight">@color/app_grey_3</color>
+    <color name="colorPrimaryLite">@color/app_grey_3</color>
+    <color name="colorPrimaryLite2">@color/app_grey_3</color>
+
+    <color name="colorAccent">#373447</color>
+    <color name="colorPrimaryDark">@color/c1</color>
+
+    <color name="c1">#793366</color>
+    <color name="c2">#B76BA2</color>
+    <color name="c3">#FFF8ECF5</color>
+
+
+
+    <color name="app_grey_1">#E6E6E6</color>
+    <color name="app_grey_2">#A4A2AA</color>
+    <color name="app_grey_3">#454545</color>
+    <color name="app_grey_4">#373447</color>
+
+    <color name="appBarColor">@color/c1</color>
+    <color name="appBarColor2">@color/white</color>
+
+    <color name="reddish_orange">#f35818</color>
+
+    <color name="orange_trance">#5EF58020</color>
+    <color name="orange_trance_xx">#2CF58020</color>
+
+    <color name="white_app">#eaeaea</color>
+    <color name="white_two">#f6f6f6</color>
+    <color name="irish_green">#009B37</color>
+
+    <color name="irish_greenLight">#3B009B37</color>
+    <color name="irish_green_dark">#008c1e</color>
+
+    <color name="onlineColor">#009B37</color>
+
+    <color name="tomato_dark">#831414</color>
+
+    <color name="dark">#2a2e43</color>
+    <color name="deep_sky_blue">#207cf5</color>
+    <color name="midBlue">#225fbf</color>
+    <color name="orchid">#b968c5</color>
+    <color name="pinkish_grey">#cccccc</color>
+    <color name="light_grey">#e3e3e2</color>
+    <color name="light_grey2">#efedeb</color>
+    <color name="light_greyxx">#d7d7d7</color>
+
+    <color name="slot_error">#66FFD8D8</color>
+    <color name="slot_inActive">#66D0D0D0</color>
+
+    <!--base -->
+
+    <!--
+        <color name="appFon2t">#373447</color>
+    -->
+    <color name="appFont">#707070</color>
+    <color name="appFontDark">@color/app_grey_3</color>
+    <color name="appFontHint">#7c7c7c</color>
+
+    <color name="loadingBar">@color/colorPrimary</color>
+
+    <color name="appBackground">@color/white</color>
+    <color name="appBackground2">#B7FAFBFB</color>
+    <color name="appBackground3">#B2CDDC</color>
+
+
+    <color name="black_app">#101010</color>
+    <color name="black_appcc">#f1212121</color>
+
+    <color name="tomato">#eb1d1d</color>
+    <color name="warm_grey">#7c7c7c</color>
+    <color name="warm_g">#B0F58020</color>
+    <color name="warm_gss">#f1212121</color>
+
+
+    <color name="black">#000000</color>
+    <color name="black_trance">#d6000000</color>
+    <color name="black_trance_x">#9f000000</color>
+    <color name="black_trance_xx">#8d000000</color>
+    <color name="black_trance_xxx">#58000000</color>
+    <color name="black_trance_xxxx">#33000000</color>
+    <color name="black_trance_xxxxx">#26000000</color>
+    <color name="black_trance_xxxxxx">#61000000</color>
+    <color name="black_trance_xxxxxxx">#00FFFFFF</color>
+    <color name="black_trance_xxxxxxxx">#00FF0303</color>
+    <color name="asd">#00FFFFFF</color>
+
+
+    <color name="white" tools:override="true">#ffffff</color>
+    <color name="white_trance_x">#bbffffff</color>
+    <color name="white_trance_xx">#90ffffff</color>
+    <color name="white_trance_xxx">#9FFFFFFF</color>
+    <color name="white2">#f6f6f6</color>
+    <color name="red">#c40303</color>
+    <color name="trance">#00000000</color>
+
+
+    <color name="ratingColor">#ffbb00</color>
+    <color name="blue3">#a0ccec</color>
+
+    <color name="btnBlueColor">#24B2EC</color>
+
+
+    <color name="tootBarBackground">#e4e4e4</color>
+
+
+    <color name="blue_2">#c9025d8c</color>
+    <color name="blue_3">#4c98bf</color>
+
+
+    <color name="trans_x">#acfffefe</color>
+    <color name="trans_xx">#00fffefe</color>
+
+    <color name="White">#ffffff</color>
+    <color name="splash_c">#373437</color>
+
+    <color name="gray">#F0F0F0</color>
+    <color name="gray_background">#FBFBFB</color>
+
+    <color name="gray_x">#e7e7e8</color>
+    <color name="gray_xx">#c9c8c8</color>
+    <color name="gray_xxx">#a4a3a3</color>
+    <color name="gray_xxxx">#818080</color>
+    <color name="gray_xxxxx">#FA616161</color>
+    <color name="gray_xxxxxx">#414141</color>
+
+    <color name="transparent">#00000000</color>
+    <color name="lineColor">#2AA8A8A8</color>
+
+
+    <color name="accentColor">#F44336</color>
+    <color name="colorHighlight">#ff54b0f4</color>
+    <color name="textColor">#ff060c10</color>
+    <color name="textColorPrimary">#fff</color>
+
+
+    <color name="green">#008D31</color>
+    <color name="green_2">#02d553</color>
+    <color name="green_xx">#5e8600</color>
+
+
+    <color name="blue">#ff33b5e5</color>
+    <color name="blue2">#84bffc</color>
+    <color name="blue4">#c2e0ff</color>
+    <color name="sprat">#a8b9ff</color>
+    <color name="background_3_dark">#02c562</color>
+    <color name="background_3">#02d86a</color>
+
+
+    <color name="orange">#eeb702</color>
+    <color name="orange2">#ffb930</color>
+    <color name="orange3">#ba8f00</color>
+    <color name="orange4">#9b7700</color>
+    <color name="orange22">#f29140</color>
+
+    <color name="orange5">#d6a403</color>
+    <color name="orange6">#ffc400</color>
+    <color name="orange333">#ef9347</color>
+
+</resources>

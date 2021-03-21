@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+option java_package = "com.hossamelsharkawy.simplecart";
+option java_multiple_files = true;
+
+message CartPreferences {
+  map<string, string> cartItems = 1;
+  int32 itemsCount = 2;
+  float totalPrice = 3;
+  string lastEditTime = 4;
+}
+

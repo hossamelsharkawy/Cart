@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="itemClick"
+            type="com.hossamelsharkawy.simplecart.app.features.products.ProductItemClickListener" />
+
+        <variable
+            name="item"
+            type="com.hossamelsharkawy.simplecart.data.entities.Product" />
+    </data>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/trance_rectangle_gray"
+        android:paddingStart="@dimen/c_padding_x"
+        android:paddingEnd="@dimen/c_padding_x">
+
+        <com.hossamelsharkawy.base.image.ImageLoading
+            android:id="@+id/img_image"
+            style="@style/image_item"
+
+            android:layout_width="@dimen/_80sdp"
+            android:layout_height="@dimen/_80sdp"
+            android:layout_marginTop="@dimen/c_padding"
+            app:imageUrl="@{item.image}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/txt_name"
+            style="@style/txt_itemTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="@dimen/c_padding"
+            android:ellipsize="end"
+            android:gravity="center|start|top"
+            android:lines="2"
+            android:maxWidth="@dimen/_150sdp"
+            android:paddingEnd="@dimen/c_padding"
+            android:text="asdasdaasasdasdaasasdasdaasasdsasdasdaas"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/img_image"
+            app:text="@{item.title}" />
+
+        <TextView
+            android:id="@+id/txt_2"
+            style="@style/txt_style3"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:maxLength="50"
+            android:text="1K"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_name" />
+
+        <include
+            android:id="@+id/product_price_ui"
+            layout="@layout/product_price_ui"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:item="@{item}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_2"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <include
+            layout="@layout/product_add_to_cart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:item="@{item}"
+
+            app:itemClick="@{itemClick}"
+            app:layout_constraintBottom_toBottomOf="parent"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/product_price_ui"
+        />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

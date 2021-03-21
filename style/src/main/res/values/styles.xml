@@ -1,0 +1,197 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:statusBarColor">@color/c1</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">@font/lato</item>
+        <item name="android:textColor">@color/app_grey_3</item>
+        <item name="android:windowContentTransitions">false</item>
+
+        <item name="android:colorPrimary">@color/colorPrimary</item>
+        <item name="android:windowBackground">@color/appBackground</item>
+        <item name="android:textSize">@dimen/xxxx_size</item>
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="SwitchCompatStyle">
+        <item name="colorControlActivated">@color/irish_green</item>
+    </style>
+
+    <style name="rowItemStyle" parent="AppTheme">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:paddingTop">@dimen/c_padding</item>
+        <item name="android:paddingBottom">@dimen/c_padding</item>
+        <item name="android:background">@drawable/line_bottom</item>
+    </style>
+
+    <style name="rowItemStyle2" parent="rowItemStyle">
+        <item name="android:minHeight">@dimen/_40sdp</item>
+        <item name="android:paddingTop">@dimen/c_padding_xx</item>
+        <item name="android:paddingBottom">@dimen/c_padding_xx</item>
+        <item name="android:background">@drawable/line_bottom</item>
+    </style>
+
+    <style name="rowItemStyle3" parent="rowItemStyle">
+        <item name="android:paddingStart">@dimen/c_padding_xx</item>
+        <item name="android:paddingEnd">@dimen/c_padding_xx</item>
+    </style>
+
+
+    <style name="MyCheckBox" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@color/black_trance_xxxxxx</item>
+        <item name="colorControlActivated">@color/colorPrimary</item>
+    </style>
+
+
+    <style name="amu_Bubble.TextAppearance.Dark" parent="android:TextAppearance.Medium">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">#ff7f7f7f</item>
+    </style>
+
+    <style name="amu_Bubble.TextAppearance.Light" parent="amu_Bubble.TextAppearance.Dark">
+        <item name="android:textColor">#ffeeeeee</item>
+    </style>
+
+    <style name="MyBottomNavigationView" parent="AppTheme">
+        <!--
+                <item name="fontFamily">@font/helvetica_neue_medium</item>
+        -->
+        <item name="listPreferredItemHeightSmall">@dimen/_40sdp
+        </item><!-- menu item height- vary as u need -->
+
+        <item name="android:itemBackground">@drawable/line_bottom</item>
+        <!--
+
+                <item name="android:textSize">50sp</item>
+                <item name="android:textStyle">bold</item>-->
+    </style>
+
+
+    <style name="fram" parent="AppTheme">
+
+        <item name="android:paddingStart">@dimen/container_padding</item>
+        <item name="android:background">@color/appBackground</item>
+
+        <item name="android:paddingTop">@dimen/c_padding_x</item>
+        <item name="android:paddingEnd">@dimen/container_padding</item>
+
+    </style>
+
+    <style name="padding" parent="AppTheme">
+        <item name="android:paddingStart">@dimen/c_padding_xxx</item>
+        <item name="android:paddingEnd">@dimen/c_padding_xxx</item>
+    </style>
+
+    <style name="arrowSmallSize">
+        <item name="android:layout_width">@dimen/imgWH</item>
+        <item name="android:layout_height">@dimen/imgWH_x</item>
+    </style>
+
+    <style name="image">
+        <item name="android:layout_width">@dimen/imgWH_xxxx</item>
+        <item name="android:layout_height">@dimen/imgWH_xxxx</item>
+        <!--
+                <item name="android:padding">@dimen/c_padding_img</item>
+        -->
+    </style>
+
+    <style name="image_small">
+        <item name="android:layout_width">@dimen/imgWH_xx</item>
+        <item name="android:layout_height">@dimen/imgWH_xx</item>
+    </style>
+
+    <style name="image_small2">
+        <item name="android:layout_width">@dimen/imgWH_xxxx</item>
+        <item name="android:layout_height">@dimen/imgWH_xxxx</item>
+    </style>
+
+   <!-- <style name="image_more" parent="image">
+        <item name="srcCompat">@drawable/ic_dods</item>
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:paddingStart">@dimen/_20sdp</item>
+    </style>
+-->
+    <style name="image_item" parent="image">
+        <item name="android:scaleType">centerInside</item>
+        <item name="android:layout_width">@dimen/_50sdp</item>
+        <item name="android:layout_height">@dimen/_50sdp</item>
+        <item name="android:layout_gravity">center</item>
+    </style>
+
+    <style name="circleImageView" parent="AppTheme">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">20%</item>
+    </style>
+
+    <style name="circleImageViewRounded" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="ShapeAppearance.ImageView" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="ShapeAppearance.rounded" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">5%</item>
+    </style>
+
+    <style name="ShapeAppearance.rounded2" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">10%</item>
+    </style>
+
+   <style name="ShapeAppearance.rounded3" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">15%</item>
+    </style>
+
+    <style name="ShapeAppearance.rounded4" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">20%</item>
+    </style>
+
+
+    <style name="ShapeAppearance.Bottom" parent="@style/Widget.MaterialComponents.CardView">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomRight">5%</item>
+        <item name="cornerSizeBottomLeft">5%</item>
+    </style>
+
+
+    <style name="line" parent="AppTheme">
+        <item name="android:background">@color/lineColor</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/_1sdp</item>
+    </style>
+
+
+    <style name="cardView1" parent="AppTheme">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/elevationValue2</item>
+        <item name="android:layout_marginEnd">@dimen/elevationValue2</item>
+        <item name="android:layout_marginTop">@dimen/elevationValue2</item>
+        <item name="android:layout_marginBottom">@dimen/c_padding_xx</item>
+        <item name="android:elevation">@dimen/elevationValue2</item>
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="cardElevation">@dimen/elevationValue2</item>
+        <item name="contentPadding">@dimen/c_padding</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.rounded2</item>
+    </style>
+
+
+</resources>

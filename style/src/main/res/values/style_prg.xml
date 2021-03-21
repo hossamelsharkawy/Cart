@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="progressBar" parent="Widget.AppCompat.ProgressBar">
+        <!-- Customize your theme here. -->
+        <item name="color">@color/white</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+
+    <style name="progresBarHorizontal" parent="Base.Widget.AppCompat.ProgressBar.Horizontal">
+        <!-- Customize your theme here. -->
+        <item name="colorAccent">@color/green</item>
+        <item name="android:indeterminateOnly">false</item>
+
+    </style>
+
+    <style name="loading_style_blue" parent="AppTheme">
+
+        <item name="colorAccent">@color/loadingBar</item>
+
+    </style>
+
+    <style name="loading_style_white" parent="AppTheme">
+        <item name="colorAccent">#ffffff</item>
+    </style>
+
+    <style name="loading_style" parent="AppTheme">
+        <item name="colorAccent">@color/loadingBar</item>
+    </style>
+
+    <style name="progresBar" parent="Widget.AppCompat.ProgressBar">
+        <!-- Customize your theme here. -->
+        <item name="color">@color/white</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+
+</resources>

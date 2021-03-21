@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="itemClick"
+            type="com.hossamelsharkawy.simplecart.app.features.products.ProductItemClickListener" />
+
+        <variable
+            name="item"
+            type="com.hossamelsharkawy.simplecart.data.entities.Product" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/c_padding"
+
+        android:layout_marginBottom="@dimen/c_padding_x"
+        android:paddingStart="@dimen/c_padding_x"
+        android:paddingEnd="0dp">
+
+        <com.hossamelsharkawy.base.image.ImageLoading
+            android:id="@+id/img_image"
+            android:layout_width="@dimen/_45sdp"
+            android:layout_height="0dp"
+            app:imageUrl="@{item.image}"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <TextView
+            android:id="@+id/txt_name"
+            style="@style/txt_itemTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/c_padding_xxx"
+            android:gravity="start"
+            android:maxLines="3"
+            android:text="saddsaasd"
+            app:layout_constraintEnd_toStartOf="@+id/btn_minQty"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/img_image"
+            app:layout_constraintTop_toTopOf="@+id/img_image"
+            app:text="@{item.title}" />
+
+        <TextView
+            android:id="@+id/txt_2"
+            style="@style/txt_style3"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:text="1kg"
+            app:layout_constraintEnd_toEndOf="@+id/txt_name"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/txt_name"
+            app:layout_constraintTop_toBottomOf="@+id/txt_name" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_addQty"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+
+            android:background="@color/transparent"
+            android:onClick="@{() -> itemClick.onAddToCart(item)}"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/img_image"
+            app:srcCompat="@drawable/btn_add_back" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btn_minQty"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@color/transparent"
+            android:onClick="@{() -> itemClick.onMinQty(item) }"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_addQty"
+            app:layout_constraintEnd_toStartOf="@+id/txt_itemCartQty"
+            app:layout_constraintTop_toTopOf="@+id/btn_addQty"
+            app:srcCompat="@drawable/btn_min_back" />
+
+        <TextView
+            android:id="@+id/txt_itemCartPrice"
+            style="@style/txt_itemTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/c_padding_min"
+            android:background="@{item.has_discount ? @drawable/line_red :@drawable/trance}"
+            android:text="@{item.price}"
+
+            app:layout_constraintStart_toStartOf="@+id/txt_name"
+            app:layout_constraintTop_toBottomOf="@+id/txt_2" />
+
+        <TextView
+            android:id="@+id/txt_itemCartQty"
+            style="@style/txt_itemTitle"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(item.qtyInCart)}"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_addQty"
+            app:layout_constraintEnd_toStartOf="@+id/btn_addQty"
+            app:layout_constraintTop_toTopOf="@+id/btn_addQty" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,11 @@
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
+
+
+dependencies {
+    implementation networkDependencies.values()
+    implementation kotlin.values()
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
+
+
+}
