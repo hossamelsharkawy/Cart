@@ -1,7 +1,6 @@
 package com.hossamelsharkawy.simplecart.app.di
 
 import android.content.Context
-import com.hossamelsharkawy.simplecart.data.cart.CartDataSource
 import com.hossamelsharkawy.simplecart.data.cart.CartLocalDataSource
 import com.hossamelsharkawy.simplecart.data.cart.DefaultCartRepository
 import com.hossamelsharkawy.simplecart.data.product.DefaultProductsRepository
@@ -49,30 +48,15 @@ class AppModule {
     @Singleton
     @Provides
     fun provideDefaultCartRepository(
-        @QCartDataSource cartSource: ICartRepository,
-         cartDataStore: ICartDataSource
-    ) = DefaultCartRepository(cartSource ,cartDataStore) as ICartRepository
-
-
-    @QCartDataSource
-    @Singleton
-    @Provides
-    fun provideCartSource(
-    ): ICartRepository = CartDataSource()
-
+        cartDataStore: ICartDataSource
+    ) :ICartRepository = DefaultCartRepository(cartDataStore)
 
     @Singleton
     @Provides
     fun provideCartDataStore(@ApplicationContext appContext: Context):
             ICartDataSource = CartLocalDataSource(appContext)
 
-
 }
-
-
-@Qualifier
-@Retention(AnnotationRetention.BINARY)
-annotation class QCartDataSource
 
 
 @Qualifier

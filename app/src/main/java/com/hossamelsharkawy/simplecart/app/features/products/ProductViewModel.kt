@@ -1,15 +1,17 @@
 package com.hossamelsharkawy.simplecart.app.features.products
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.hossamelsharkawy.simplecart.data.entities.Product
 import com.hossamelsharkawy.simplecart.data.entities.Products
+import com.hossamelsharkawy.simplecart.data.entities.Resource
 import com.hossamelsharkawy.simplecart.domain.ICartRepository
 import com.hossamelsharkawy.simplecart.domain.IProductsRepository
 import com.hossamelsharkawy.simplecart.domain.usecases.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -19,17 +21,19 @@ class ProductViewModel @Inject internal constructor(
     private val cartRepository: ICartRepository
 ) : ViewModel() {
 
-
-    private val _items = MutableLiveData<Products>().apply { value = arrayListOf() }
-    var items: LiveData<Products> = _items
-
-    private val _cartItems = MutableLiveData<Products>()
-    var cartItems: LiveData<Products> = _cartItems
+    private var _itemsCount = MutableStateFlow(0)
+    var itemsCount = _itemsCount.asLiveData()
 
 
-    private val _dataLoading = MutableLiveData<Boolean>()
-    val dataLoading: LiveData<Boolean> = _dataLoading
+    private var _dataLoading = MutableStateFlow(true)
+    var dataLoading = _dataLoading.asLiveData()
 
+
+    var items = MutableStateFlow(arrayListOf<Product>())
+        private set
+
+    var cartItems = MutableStateFlow(arrayListOf<Product>())
+        private set
 
     init {
         fetchProducts()
@@ -40,35 +44,39 @@ class ProductViewModel @Inject internal constructor(
         val product = showAllProducts(productsRepository, cartRepository)
 
         if (product.isNullOrEmpty()) {
-            _items.value = arrayListOf()
+            items.value = arrayListOf()
         } else {
-            _items.value = ArrayList(product)
+            items.value = ArrayList(product)
         }
+
         _dataLoading.value = false
+        fetchCartItems()
     }
 
-     fun fetchCartItems() = viewModelScope.launch {
+    private fun fetchCartItems() = viewModelScope.launch {
         val product = showAllCartItems(productsRepository, cartRepository)
 
         if (product.isNullOrEmpty()) {
-            _cartItems.value = arrayListOf()
+            cartItems.value = arrayListOf()
         } else {
-            _cartItems.value = ArrayList(product)
+            cartItems.value = ArrayList(product)
         }
+        _itemsCount.value = cartItems.value.sumBy { it.qtyInCart }
     }
-
 
     fun addToCart(product: Product) = viewModelScope.launch {
         product.addToCart(cartRepository)
+        fetchCartItems()
     }
 
     fun onPlusQty(product: Product) = viewModelScope.launch {
         product.plusQtyInCart(cartRepository)
+        fetchCartItems()
     }
 
     fun onMinQty(product: Product) = viewModelScope.launch {
         product.minQtyInCart(cartRepository)
-
+        fetchCartItems()
     }
 }
 

@@ -16,6 +16,11 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <include
+            android:id="@+id/app_bar_home"
+            layout="@layout/app_bar_home"
+            app:viewModel="@{viewModel}"
+            />
         <ProgressBar
             android:layout_gravity="center"
             android:id="@+id/loadText"

@@ -10,8 +10,7 @@
     <FrameLayout
         android:layout_width="@dimen/imgWH_xxxxx"
         android:layout_height="match_parent"
-        android:layout_gravity="start">​
-
+        android:layout_gravity="start">
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_BackToolBar"
             style="@style/btn_back_toolbar" />

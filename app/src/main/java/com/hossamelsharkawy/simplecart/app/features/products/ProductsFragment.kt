@@ -5,19 +5,27 @@ import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.hossamelsharkawy.base.ui.recycel.*
 import com.hossamelsharkawy.simplecart.R
 import com.hossamelsharkawy.simplecart.data.entities.Product
+import com.hossamelsharkawy.simplecart.databinding.AppBarHomeBinding.bind
+import com.hossamelsharkawy.simplecart.databinding.CartBarViewBinding
 import com.hossamelsharkawy.simplecart.databinding.FragmentProductsBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+
 
 @AndroidEntryPoint
 class ProductsFragment : Fragment(R.layout.fragment_products) {
 
     private val viewBinding by viewBinding(FragmentProductsBinding::bind)
 
-    private val mViewModel: ProductViewModel by viewModels()
+    private lateinit var mViewModel: ProductViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -26,9 +34,11 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
     }
 
     private fun setViewModel() = with(viewBinding) {
+        mViewModel = ViewModelProvider(requireActivity()).get(ProductViewModel::class.java)
         withFragment(this)
         this.viewModel = this@ProductsFragment.mViewModel
     }
+
 
     private fun setProductsUi() = with(viewBinding) {
         val adapter = ProductsAdapter(object : ProductItemClickListener {
@@ -45,11 +55,24 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
             }
         })
 
-
         productList.adapter = adapter
-        viewModel?.items?.observe(viewLifecycleOwner) { result ->
-            adapter.submitList(result)
+
+
+        lifecycleScope.launch {
+            viewModel?.items?.collect {result ->
+                adapter.submitList(result)
+            }
         }
+
+        viewModel?.itemsCount?.observe(viewLifecycleOwner) { result ->
+            viewBinding.appBarHome.cartBarView.txtCartCountCount.text = (result ?: 0).toString()
+        }
+
+       viewBinding.appBarHome.cartBarView.imgCartCount.setOnClickListener {
+           findNavController().navigate(R.id.action_ProductsFragment_to_bottomSheet)
+       }
+
+
     }
 }
 

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.shape.CornerFamily
 import com.hossamelsharkawy.simplecart.R
@@ -14,13 +15,14 @@ import com.hossamelsharkawy.simplecart.app.features.products.ProductViewModel
 import com.hossamelsharkawy.simplecart.app.features.products.withFragment
 import com.hossamelsharkawy.simplecart.data.entities.Product
 import com.hossamelsharkawy.simplecart.databinding.BottomSheetPersistentBinding
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 
 
-class CartItemsBottomSheet : BottomSheetDialogFragment() {
+class CartItemsFragment : BottomSheetDialogFragment() {
 
     lateinit var viewBinding: BottomSheetPersistentBinding
     private lateinit var mViewModel: ProductViewModel
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -44,16 +46,12 @@ class CartItemsBottomSheet : BottomSheetDialogFragment() {
 
         setViewModel()
         setCartItemUi()
-        mViewModel.fetchCartItems()
-
     }
 
 
     private fun setViewModel() = with(viewBinding) {
         withFragment(this)
-
         mViewModel = ViewModelProvider(requireActivity()).get(ProductViewModel::class.java)
-
         this.viewModel = mViewModel
     }
 
@@ -61,8 +59,6 @@ class CartItemsBottomSheet : BottomSheetDialogFragment() {
         val adapter = CartItemsAdapter(object : ProductItemClickListener {
 
             override fun onPlusQty(product: Product) {
-
-
                 mViewModel.onPlusQty(product)
             }
 
@@ -71,10 +67,12 @@ class CartItemsBottomSheet : BottomSheetDialogFragment() {
             }
         })
 
-
         cartItemList.adapter = adapter
-        viewModel?.cartItems?.observe(viewLifecycleOwner) { result ->
-            adapter.submitList(result)
+
+        lifecycleScope.launch {
+            viewModel?.cartItems?.collect {result ->
+                adapter.submitList(result)
+            }
         }
     }
 }

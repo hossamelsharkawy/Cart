@@ -1,11 +1,8 @@
 package com.hossamelsharkawy.simplecart.data.product
 
-import com.hossamelsharkawy.simplecart.data.entities.Product
 import com.hossamelsharkawy.simplecart.data.entities.Products
 import com.hossamelsharkawy.simplecart.domain.IProductsDataSource
 import com.hossamelsharkawy.simplecart.domain.IProductsRepository
-import java.util.concurrent.ConcurrentHashMap
-import java.util.concurrent.ConcurrentMap
 import javax.inject.Inject
 
 class DefaultProductsRepository @Inject constructor(
@@ -14,41 +11,18 @@ class DefaultProductsRepository @Inject constructor(
     // private val ioDispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : IProductsRepository {
 
-    private var cachedProducts: ConcurrentMap<Int, Product>? = null
+    private var cachedProducts: Products? = null
 
     override suspend fun getProducts(forceUpdate: Boolean): Products? {
-        return fetchTasksFromRemoteOrLocal()
+        return fetchProductsFromRemoteOrLocal()
     }
 
-
-    private suspend fun fetchTasksFromRemoteOrLocal(): Products? {
-        return productsRemoteDataSource
-            .getProducts()
-            ?.run {
-                refreshLocalDataSource(this)
-                this
-            }
-            ?: cachedProducts?.values?.toList()
-            ?: productsLocalDataSource.getProducts()
-    }
-
-
-    private suspend fun refreshLocalDataSource(products: Products) {
-        cachedProducts?.clear()
-        productsLocalDataSource.deleteAll()
-        for (product in products) {
-            productsLocalDataSource.save(product)
-            product.cacheProduct()
-        }
-    }
-
-
-    private fun Product.cacheProduct() {
-        // Create if it doesn't exist.
+    private suspend fun fetchProductsFromRemoteOrLocal(): Products? {
         if (cachedProducts == null) {
-            cachedProducts = ConcurrentHashMap()
+            cachedProducts = productsRemoteDataSource.getProducts()
         }
-        cachedProducts?.put(id, this)
-
+        return cachedProducts ?: productsLocalDataSource.getProducts()
     }
+
+
 }

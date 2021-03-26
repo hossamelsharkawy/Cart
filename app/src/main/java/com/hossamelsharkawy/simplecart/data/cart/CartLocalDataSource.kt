@@ -17,7 +17,6 @@ import java.io.IOException
 import java.io.InputStream
 import java.io.OutputStream
 
-
 class CartLocalDataSource(context: Context) : ICartDataSource {
 
     companion object {
@@ -41,7 +40,6 @@ class CartLocalDataSource(context: Context) : ICartDataSource {
         return cartItems
     }
 
-
     override suspend fun removeCartItem(cartItem: CartItem): CartItem? {
         dataStore.updateData { preferences ->
             preferences.toBuilder()
@@ -52,15 +50,20 @@ class CartLocalDataSource(context: Context) : ICartDataSource {
         return null
     }
 
+
+
     suspend fun clearCartItems() {
         dataStore.updateData { preferences ->
             preferences.toBuilder()
                 .clearCartItems()
-                .setLastEditTime()
+                .setLastEditTime(null)
                 .build()
         }
     }
 
+    override suspend fun removeAllCartItems() {
+        clearCartItems()
+    }
     override suspend fun getCartItemsList() =
         cartPreferences
             .firstOrNull()
@@ -71,8 +74,6 @@ class CartLocalDataSource(context: Context) : ICartDataSource {
 
 
     fun getCartItemsAsLiveData() = cartPreferences.asLiveData()
-
-
 
 
     private val cartPreferences = dataStore.data

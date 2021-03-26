@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.hossamelsharkawy.simplecart.app.features.products.ProductDiffCallback
 import com.hossamelsharkawy.simplecart.app.features.products.ProductItemClickListener
 import com.hossamelsharkawy.simplecart.data.entities.Product
+import com.hossamelsharkawy.simplecart.databinding.CartItemItemBinding
 import com.hossamelsharkawy.simplecart.databinding.ProductItemBinding
 
 class CartItemsAdapter(private val itemClickCallback: ProductItemClickListener) :
@@ -17,7 +18,7 @@ class CartItemsAdapter(private val itemClickCallback: ProductItemClickListener) 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
-            ProductItemBinding.inflate(
+            CartItemItemBinding.inflate(
                 getLayoutInflater(parent.context),
                 parent,
                 false
@@ -28,7 +29,7 @@ class CartItemsAdapter(private val itemClickCallback: ProductItemClickListener) 
         holder.bind(getItem(position))
 
     inner class ViewHolder(
-        private val binding: ProductItemBinding
+        private val binding: CartItemItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun bind(product: Product) = with(binding) {
             item = product

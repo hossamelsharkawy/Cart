@@ -15,20 +15,22 @@ interface IProductsRepository {
     suspend fun save(product: Product) {}
 }
 
+//for business
 interface ICartRepository {
     suspend fun getCartItems(): CartItems?
-    suspend fun addToCart(product: Product): CartItem
-    suspend fun plusQtyInCart(product: Product): CartItem
-    suspend fun minQtyInCart(product: Product): CartItem? = null
+    suspend fun addNewCartItem(product: Product): CartItem
+    suspend fun increaseCartItemQty(product: Product): CartItem? = null
+    suspend fun decreaseCartItemQty(product: Product): CartItem? = null
     suspend fun isCartValid(): Boolean = true
-    suspend fun resetCart() {}
+    suspend fun restoreFromLocalSource(): CartItems? = null
 }
-
+//for tech
 interface ICartDataSource {
     suspend fun getCartItemsList(): CartItems? = null
     suspend fun saveCartItem(cartItems: CartItem): CartItem? = null
     suspend fun removeCartItem(cartItem: CartItem): CartItem? = null
-    suspend fun getLastEditTime():String? =null
+    suspend fun removeAllCartItems() {}
+    suspend fun getLastEditTime(): String? = null
 }
 
 interface IFavoriteRepository {

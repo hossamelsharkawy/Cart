@@ -20,7 +20,7 @@
 
     <dialog
         android:id="@+id/bottomSheet"
-        android:name="com.hossamelsharkawy.simplecart.app.features.cart.CartItemsBottomSheet"
+        android:name="com.hossamelsharkawy.simplecart.app.features.cart.CartItemsFragment"
         android:label="EntryDialogFragment"
     tools:layout="@layout/bottom_sheet_persistent" >
 

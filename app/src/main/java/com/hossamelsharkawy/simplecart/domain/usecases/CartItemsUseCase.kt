@@ -15,14 +15,14 @@ suspend fun showAllCartItems(
 
 
 suspend fun Product.addToCart(cartRepository: ICartRepository) {
-    cartRepository.addToCart(this)
+    cartRepository.addNewCartItem(this)
 }
 
 suspend fun Product.plusQtyInCart(cartRepository: ICartRepository) {
-    cartRepository.plusQtyInCart(this)
+    cartRepository.increaseCartItemQty(this)
 }
 
 suspend fun Product.minQtyInCart(cartRepository: ICartRepository) {
-    cartRepository.minQtyInCart(this)
+    cartRepository.decreaseCartItemQty(this)
 }
 
