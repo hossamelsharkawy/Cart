@@ -13,27 +13,34 @@
         <action
             android:id="@+id/action_ProductsFragment_to_bottomSheet"
             app:destination="@id/bottomSheet" />
+
+        <action
+            android:id="@+id/action_ProductsFragment_to_notification"
+            app:destination="@id/notificationFragment" />
     </fragment>
 
 
+    <fragment
+        android:id="@+id/notificationFragment"
+        android:name="com.hossamelsharkawy.simplecart.app.features.notification.NotificationFragment"
+        android:label="NotificationFragment"
+        tools:layout="@layout/fragment_notification">
+    </fragment>
 
 
     <dialog
         android:id="@+id/bottomSheet"
         android:name="com.hossamelsharkawy.simplecart.app.features.cart.CartItemsFragment"
         android:label="EntryDialogFragment"
-    tools:layout="@layout/bottom_sheet_persistent" >
+        tools:layout="@layout/bottom_sheet_persistent">
 
         <deepLink app:uri="myapp://navdonutcreator.com/donutcreator" />
         <argument
             android:name="itemId"
-            app:argType="long"
-            android:defaultValue="-1L" />
+            android:defaultValue="-1L"
+            app:argType="long" />
 
     </dialog>
-
-
-
 
 
 </navigation>

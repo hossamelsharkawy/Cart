@@ -5,14 +5,12 @@ plugins {
 }
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
     buildToolsVersion mBuildToolsVersion
 
     defaultConfig {
         minSdkVersion mMinSdkVersion
-        targetSdkVersion 30
-        versionCode 1
-        versionName "1.0"
+        targetSdkVersion 31
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -43,6 +41,8 @@ dependencies {
     implementation androidExtra.values()
     implementation lifecycle.values()
     implementation picasso.values()
+    implementation androidNavigation.values()
+
 
     implementation project(':style')
   //  implementation project(':req')

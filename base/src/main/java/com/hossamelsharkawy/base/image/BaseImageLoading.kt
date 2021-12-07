@@ -5,8 +5,8 @@ import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
-import com.elsharkawe.base.extension.gone
-import com.elsharkawe.base.extension.visible
+import com.hossamelsharkawy.base.extension.gone
+import com.hossamelsharkawy.base.extension.visible
 import com.github.ybq.android.spinkit.SpinKitView
 import com.github.ybq.android.spinkit.SpriteFactory
 import com.github.ybq.android.spinkit.Style

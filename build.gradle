@@ -1,17 +1,17 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.4.31"
-    ext.hilt_version = '2.33-beta'
+    ext.kotlin_version = "1.6.0"
+    ext.hilt_version = '2.40.4'
 
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.3'
+        classpath 'com.android.tools.build:gradle:7.0.3'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
-      //  classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.15'
+        //  classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.15'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -25,33 +25,23 @@ allprojects {
         mavenCentral()
 
         //maven { url 'https://jitpack.io' }
-        maven {
-            url "https://dl.bintray.com/hossamelshrkawy/LoadingView"
-        }
+        /* maven {
+             url "https://dl.bintray.com/hossamelshrkawy/LoadingView"
+         }*/
     }
 
     ext {
         mCompileSdkVersion = 30
         mTargetSdkVersion = 30
-        mBuildToolsVersion = '31.0.0-rc2'
+        mBuildToolsVersion = '32.0.0-rc1'
         mMinSdkVersion = 24
 
         def RetrofitVersion = '2.9.0'
-        def OkHttpVersion = '4.9.0'
+        def OkHttpVersion = '5.0.0-alpha.3'
 
 
-        def RxAndroidVersion = '2.0.1'
-        def RxJavaVersion = '2.1.3'
-        //def RxKotlinVersion = '2.1.0'
-        def coroutines = '1.3.7'
-        def parseVersion = '1.25.0'
+        def coroutines = '1.6.0-RC'
 
-
-        rxJavaDependencies = [
-                rxJava   : "io.reactivex.rxjava2:rxjava:${RxJavaVersion}",
-                // rxKotlin : "io.reactivex.rxjava2:rxkotlin:${RxKotlinVersion}",
-                rxAndroid: "io.reactivex.rxjava2:rxandroid:${RxAndroidVersion}"
-        ]
 
 
         networkDependencies = [
@@ -68,15 +58,15 @@ allprojects {
         androidViews = [
                 appcompat         : "androidx.appcompat:appcompat:1.2.0",
                 constraint        : 'androidx.constraintlayout:constraintlayout:2.0.4',
-                recyclerview      : "androidx.recyclerview:recyclerview:1.1.0",
+                recyclerview      : "androidx.recyclerview:recyclerview:1.3.0-alpha01",
                 cardview          : "androidx.cardview:cardview:1.0.0",
-                design            : "com.google.android.material:material:1.3.0-alpha02",
+                design            : "com.google.android.material:material:1.5.0-beta01",
                 swiperefreshlayout: "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
         ]
 
         androidNavigation = [
-                fragment: 'androidx.navigation:navigation-fragment-ktx:2.3.1',
-                ui      : 'androidx.navigation:navigation-ui-ktx:2.3.1',
+                fragment: 'androidx.navigation:navigation-fragment-ktx:2.4.0-beta02',
+                ui      : 'androidx.navigation:navigation-ui-ktx:2.4.0-beta02',
         ]
 
         picasso = [
@@ -89,7 +79,7 @@ allprojects {
                 coroutines: "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines",
                 kotlinx   : "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines",
                 // reflect   : "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version",
-                core_ktx  : 'androidx.core:core-ktx:1.3.2'
+                core_ktx  : 'androidx.core:core-ktx:1.7.0'
 
 
                 // reflectLite   : "org.jetbrains.kotlinx:kotlinx.reflect.lite:1.0.0"
@@ -111,22 +101,26 @@ lifecycle.viewmodel_ktx = "androidx.lifecycle:lifecycle-viewmodel-ktx:$versions.
 lifecycle.livedata_ktx = "androidx.lifecycle:lifecycle-livedata-ktx:$versions.lifecycle"
 deps.lifecycle = lifecycle
         * */
+
+
+        def lifecycle_version = "2.4.0"
         lifecycle = [
-                extensions: "androidx.lifecycle:lifecycle-extensions:2.2.0",
-                viewmodel : 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0',
-                livedata_ktx : "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0",
-                viewmodel_ktx : "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0",
-                fragment_ktx : "androidx.fragment:fragment-ktx:1.2.5"
+
+                //for viewModelScope
+                runtime                : "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version",
+                //for lifecycleScope
+                livedata_ktx           : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version",  //https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-livedata-ktx
+                savedstate             : "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version",
+
+                extensions             : "androidx.lifecycle:lifecycle-extensions:2.2.0", //https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-extensions
+                viewmodel              : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",//https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-viewmodel-ktx
+
+                fragment_ktx           : "androidx.fragment:fragment-ktx:1.4.0",// https://mvnrepository.com/artifact/androidx.fragment/fragment-ktx
+                activity               : "androidx.activity:activity-ktx:1.4.0" // https://mvnrepository.com/artifact/androidx.activity/activity-ktx
+                ,databindingRuntime: "androidx.databinding:databinding-runtime:7.0.3"
 
                 // common_java8: "android.arch.lifecycle:common-java8:2.0.0"
-        ]
 
-        parse = [
-                Android_parse: "com.github.parse-community.Parse-SDK-Android:parse:$parseVersion",
-                Android_ktx  : "com.github.parse-community.Parse-SDK-Android:ktx:$parseVersion",
-                Android_fcm  : "com.github.parse-community.Parse-SDK-Android:fcm:$parseVersion",
-                coroutines   : "com.github.parse-community.Parse-SDK-Android:coroutines:$parseVersion",
-                //   ParseLiveQuery   :"com.github.parse-community:ParseLiveQuery-Android:1.2.2"
         ]
 
         firebase = [
@@ -135,8 +129,8 @@ deps.lifecycle = lifecycle
                 core     : "com.google.firebase:firebase-core:17.2.3"
         ]
         androidExtra = [
-               // fastrec          : "com.hossamelsharkawy:fastrec:0.1.26",
-                loadingview      : 'com.hossamelsharkawy:loadingview:0.0.2',
+                // fastrec          : "com.hossamelsharkawy:fastrec:0.1.26",
+                //   loadingview      : 'com.hossamelsharkawy:loadingview:0.0.2',
                 eventlite        : 'com.hossamelsharkawy:eventlite:0.0.1',
                 assent_core      : 'com.afollestad.assent:core:3.0.0-RC4',
                 assent_rationales: 'com.afollestad.assent:rationales:3.0.0-RC4',
@@ -152,7 +146,7 @@ deps.lifecycle = lifecycle
 
 
         unitTest = [
-                junit    : "junit:junit:4.13.1",
+                junit   : "junit:junit:4.13.1",
                 androidx: 'androidx.test.ext:junit:1.1.2',
                 espresso: 'androidx.test.espresso:espresso-core:3.3.0',
         ]

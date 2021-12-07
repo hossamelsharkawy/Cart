@@ -7,57 +7,74 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.ListAdapter
+import by.kirich1409.viewbindingdelegate.viewBinding
+import com.google.android.material.bottomsheet.BottomSheetBehavior.STATE_EXPANDED
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.shape.CornerFamily
+import com.hossamelsharkawy.base.extension.collect
 import com.hossamelsharkawy.simplecart.R
 import com.hossamelsharkawy.simplecart.app.features.products.ProductItemClickListener
 import com.hossamelsharkawy.simplecart.app.features.products.ProductViewModel
 import com.hossamelsharkawy.simplecart.app.features.products.withFragment
 import com.hossamelsharkawy.simplecart.data.entities.Product
 import com.hossamelsharkawy.simplecart.databinding.BottomSheetPersistentBinding
+import com.hossamelsharkawy.simplecart.databinding.FragmentProductsBinding
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
 
 
 class CartItemsFragment : BottomSheetDialogFragment() {
 
-    lateinit var viewBinding: BottomSheetPersistentBinding
+
+    private val viewBinding by viewBinding(BottomSheetPersistentBinding::bind)
+
     private lateinit var mViewModel: ProductViewModel
+
+    lateinit var adapter: ListAdapter<Product, *>
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        viewBinding =
-            DataBindingUtil.inflate(inflater, R.layout.bottom_sheet_persistent, container, false)
-        return viewBinding.root
-    }
+    ): View = inflater.inflate(R.layout.bottom_sheet_persistent, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val bottomSheet = viewBinding.bottomSheet
 
-        view.setBackgroundResource(R.color.gray_xxxxx)
+        setViewModel()
+        setCartItemUi()
+        subUIEvents()
+
+    }
+
+    private fun subUIEvents() {
+        collect(mViewModel.cartItemsFlow) { adapter.submitList(it) }
+    }
+
+
+    private fun setViewModel() = with(viewBinding) {
+        withFragment(this)
+        mViewModel = ViewModelProvider(requireActivity())[ProductViewModel::class.java]
+        this.viewModel = mViewModel
+    }
+
+
+    private fun setCartItemUi() = with(viewBinding) {
+        root.setBackgroundResource(R.color.gray_xxxxx)
+
+
         bottomSheet.shapeAppearanceModel = bottomSheet.shapeAppearanceModel
             .toBuilder()
             .setTopLeftCorner(CornerFamily.ROUNDED, 70f)
             .setTopRightCorner(CornerFamily.ROUNDED, 70f)
             .build()
 
-        setViewModel()
-        setCartItemUi()
-    }
 
 
-    private fun setViewModel() = with(viewBinding) {
-        withFragment(this)
-        mViewModel = ViewModelProvider(requireActivity()).get(ProductViewModel::class.java)
-        this.viewModel = mViewModel
-    }
+        (dialog as BottomSheetDialog).behavior.state = STATE_EXPANDED
 
-    private fun setCartItemUi() = with(viewBinding) {
-        val adapter = CartItemsAdapter(object : ProductItemClickListener {
-
+        CartItemsAdapter(object : ProductItemClickListener {
             override fun onPlusQty(product: Product) {
                 mViewModel.onPlusQty(product)
             }
@@ -65,14 +82,12 @@ class CartItemsFragment : BottomSheetDialogFragment() {
             override fun onMinQty(product: Product) {
                 mViewModel.onMinQty(product)
             }
-        })
-
-        cartItemList.adapter = adapter
-
-        lifecycleScope.launch {
-            viewModel?.cartItems?.collect {result ->
-                adapter.submitList(result)
-            }
+        }).run {
+            adapter =this
+            cartItemList.adapter = this
         }
+
+
     }
+
 }

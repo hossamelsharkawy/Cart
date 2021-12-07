@@ -14,18 +14,16 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/bottomSheet"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="top"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -33,19 +31,20 @@
                     android:id="@+id/button"
                     android:layout_width="@dimen/_35sdp"
                     android:layout_height="@dimen/_3sdp"
-                    android:layout_marginTop="@dimen/c_padding_xxx"
+                    android:layout_marginTop="@dimen/c_padding"
+                    android:layout_marginBottom="@dimen/c_padding"
                     android:background="@drawable/border_gray_dark_corner" />
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/cartItem_list"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/c_padding_x"
-                    android:layout_marginTop="@dimen/c_padding_x"
-                    android:layout_marginEnd="@dimen/c_padding_x"
+                    android:layout_height="0dp"
+
                     android:layout_weight="1"
                     android:clipToPadding="false"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:itemCount="150"
                     tools:listitem="@layout/cart_item_item" />
 
                 <com.google.android.material.button.MaterialButton

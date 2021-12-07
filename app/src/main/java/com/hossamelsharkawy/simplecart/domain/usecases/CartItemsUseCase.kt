@@ -6,12 +6,10 @@ import com.hossamelsharkawy.simplecart.domain.ICartRepository
 import com.hossamelsharkawy.simplecart.domain.IProductsRepository
 
 
-
 suspend fun showAllCartItems(
     productsRepo: IProductsRepository,
     cartRepository: ICartRepository,
-): Products? = showAllProducts(productsRepo, cartRepository)?.filter { it.qtyInCart > 0 }
-
+): Products = showAllProducts(productsRepo, cartRepository).filter { it.qtyInCart > 0 }
 
 
 suspend fun Product.addToCart(cartRepository: ICartRepository) {

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import com.elsharkawe.base.extension.gone
+import com.hossamelsharkawy.base.extension.gone
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.hossamelsharkawy.simplecart.R
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,8 +18,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         navController = findNavController(R.id.nav_host_fragment)
+        navController.enableOnBackPressed(true)
 
-         findViewById<FloatingActionButton>(R.id.fab).gone()
+        findViewById<FloatingActionButton>(R.id.fab).gone()
         /*findViewById<FloatingActionButton>(R.id.fab).setOnClickListener { view ->
             navController.navigate(R.id.action_ProductsFragment_to_bottomSheet)
         }*/

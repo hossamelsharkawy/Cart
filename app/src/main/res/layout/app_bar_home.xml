@@ -62,7 +62,9 @@
                 style="@style/btn_search_toolbar" />
 
 
-            <include layout="@layout/notifications_bar_view" />
+            <include
+                layout="@layout/notifications_bar_view"
+                app:viewModel="@{viewModel}" />
 
             <include
                 android:id="@+id/cart_bar_view"

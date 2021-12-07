@@ -2,13 +2,16 @@ package com.hossamelsharkawy.simplecart.app
 
 import Storage
 import android.app.Application
-import androidx.databinding.ViewDataBinding
-import androidx.fragment.app.Fragment
+import androidx.navigation.ActivityNavigator
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 import com.hossamelsharkawy.base.net.BaseApp
 import com.hossamelsharkawy.simplecart.R
 import dagger.hilt.android.HiltAndroidApp
 import okhttp3.OkHttpClient
 import javax.inject.Inject
+
+
 
 @HiltAndroidApp
 class App : Application() {
@@ -31,6 +34,8 @@ class App : Application() {
         instance = this
         //setServer()
         setBase()
+
+
     }
 
     private fun setBase() {
@@ -44,7 +49,6 @@ class App : Application() {
             }
         )
     }
-
 
 
 }

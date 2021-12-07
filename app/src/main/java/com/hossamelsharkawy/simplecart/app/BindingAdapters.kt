@@ -18,10 +18,8 @@ package com.hossamelsharkawy.simplecart.app
 
 import android.view.View
 import androidx.databinding.BindingAdapter
-import com.elsharkawe.base.extension.gone
-import com.elsharkawe.base.extension.visibleIf
+import com.hossamelsharkawy.base.extension.visibleIf
 import com.hossamelsharkawy.base.image.BaseImageLoading
-import com.hossamelsharkawy.base.image.ImageShapLoading
 import com.hossamelsharkawy.base.net.load
 
 
@@ -35,6 +33,14 @@ fun loadImage(view: BaseImageLoading, url: String?) {
 
 @BindingAdapter("viewIf")
 fun viewIf(view: View, boolean: Boolean?) = view.visibleIf(boolean)
+
+
+@BindingAdapter("onClick")
+fun onClick(view: View, action: () -> Unit) = view.setOnClickListener { action.invoke() }
+
+
+
+
 
 
 

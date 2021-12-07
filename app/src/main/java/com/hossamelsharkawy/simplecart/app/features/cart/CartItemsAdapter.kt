@@ -1,20 +1,15 @@
 package com.hossamelsharkawy.simplecart.app.features.cart
 
-import android.content.Context
-import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.hossamelsharkawy.simplecart.app.features.products.ListAdapter2
 import com.hossamelsharkawy.simplecart.app.features.products.ProductDiffCallback
 import com.hossamelsharkawy.simplecart.app.features.products.ProductItemClickListener
 import com.hossamelsharkawy.simplecart.data.entities.Product
 import com.hossamelsharkawy.simplecart.databinding.CartItemItemBinding
-import com.hossamelsharkawy.simplecart.databinding.ProductItemBinding
 
 class CartItemsAdapter(private val itemClickCallback: ProductItemClickListener) :
-    ListAdapter<Product, CartItemsAdapter.ViewHolder>(ProductDiffCallback()) {
-
-    private var layoutInflater: LayoutInflater? = null
+    ListAdapter2<Product, CartItemsAdapter.ViewHolder>(ProductDiffCallback) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(
@@ -38,11 +33,4 @@ class CartItemsAdapter(private val itemClickCallback: ProductItemClickListener) 
         }
     }
 
-
-    private fun getLayoutInflater(context: Context): LayoutInflater {
-        if (layoutInflater == null) {
-            layoutInflater = LayoutInflater.from(context)
-        }
-        return layoutInflater!!
-    }
 }

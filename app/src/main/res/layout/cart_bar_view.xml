@@ -6,14 +6,19 @@
         <variable
             name="viewModel"
             type="com.hossamelsharkawy.simplecart.app.features.products.ProductViewModel" />
+
+
     </data>
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/img_cart_count"
+        onClick="@{viewModel.openCart}"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/c_margin">
+        android:layout_marginEnd="@dimen/c_margin"
+
+        >
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_bell"
@@ -23,14 +28,13 @@
 
 
         <FrameLayout
-            viewIf="@{viewModel.itemsCount>0}"
-            android:layout_marginTop="@dimen/_1sdp"
-
             android:id="@+id/nCountCart"
+            viewIf="@{viewModel.itemsCount.flow>0}"
+
             android:layout_width="@dimen/_15sdp"
             android:layout_height="@dimen/_15sdp"
             android:layout_gravity="end"
-            >
+            android:layout_marginTop="@dimen/_1sdp">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="match_parent"
@@ -43,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:text="@{String.valueOf(viewModel.itemsCount)}"
+                android:text="@{String.valueOf(viewModel.itemsCount.flow)}"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_9ssp" />
         </FrameLayout>

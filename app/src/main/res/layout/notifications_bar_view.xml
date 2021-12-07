@@ -1,40 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout>
 
-    android:id="@+id/img_notification"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="@dimen/c_margin">
+    <data>
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_bell"
-        style="@style/ic_toolbar"
-        android:tint="@color/gray_xxxx"
-        app:srcCompat="@drawable/ic_bell" />
+        <variable
+            name="viewModel"
+            type="com.hossamelsharkawy.simplecart.app.features.products.ProductViewModel" />
 
+    </data>
 
-    <FrameLayout
-        android:visibility="gone"
-        android:id="@+id/nCount"
-        android:layout_width="@dimen/_13sdp"
-        android:layout_height="@dimen/_13sdp"
-        android:layout_gravity="end"
-        android:layout_marginTop="@dimen/_6sdp"
-        android:layout_marginEnd="@dimen/_4sdp">
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/img_notification"
+        onClick="@{viewModel.openNotification}"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/c_margin"
+
+        >
+
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:tint="@color/orange2"
-            app:srcCompat="@drawable/circle_red" />
+            android:id="@+id/img_bell"
+            style="@style/ic_toolbar"
+            android:tint="@color/gray_xxxx"
+            app:srcCompat="@drawable/ic_bell" />
 
-        <TextView
-            android:id="@+id/txt_num_notify"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textSize="@dimen/_8ssp" />
+
+        <FrameLayout
+            android:id="@+id/nCount"
+            android:layout_width="@dimen/_13sdp"
+            android:layout_height="@dimen/_13sdp"
+            android:layout_gravity="end"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:layout_marginEnd="@dimen/_4sdp"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:srcCompat="@drawable/circle_red"
+                app:tint="@color/orange2" />
+
+            <TextView
+                android:id="@+id/txt_num_notify"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_8ssp" />
+        </FrameLayout>
     </FrameLayout>
-</FrameLayout>
+</layout>
+
+

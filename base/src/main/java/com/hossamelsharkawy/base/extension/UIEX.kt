@@ -6,11 +6,19 @@ import android.os.Handler
 import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.widget.EditText
+import androidx.annotation.IdRes
+import androidx.fragment.app.Fragment
+import androidx.navigation.NavController
+import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ListAdapter
 import com.google.android.material.tabs.TabLayout
 import com.hossamelsharkawy.base.R
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.Flow
 
 /**
  * Created by Hossam Elsharkawy
@@ -40,7 +48,6 @@ fun EditText.onValueChanged(onChange: (String) -> Unit) {
 }
 
 
-
 fun EditText.setValidEditText() {
     setBackgroundResource(R.drawable.line_bottom)
 }
@@ -67,9 +74,8 @@ fun TabLayout.setOnChanged(function: (pos: Int) -> Unit) {
 }
 
 
-
-fun EditText.sub(  delay: Long? = 300 , runnable: Runnable) {
-    addTextChangedListener(MyWatcher(runnable,delay) )
+fun EditText.sub(delay: Long? = 300, runnable: Runnable) {
+    addTextChangedListener(MyWatcher(runnable, delay))
 }
 
 class MyWatcher(private val runnable: Runnable, private val delay: Long? = 300) : TextWatcher {
@@ -95,3 +101,14 @@ fun android.view.View.showKeyBoard(context: Context) =
 fun android.view.View.hideKeyBoard(context: Context) =
     (context.getSystemService(Activity.INPUT_METHOD_SERVICE) as android.view.inputmethod.InputMethodManager)
         .hideSoftInputFromWindow(this.windowToken, 0)
+
+
+fun NavController.navigateSafe(@IdRes id: Int) {
+    currentDestination?.getAction(id)
+        ?.let { navigate(id) }
+}
+
+fun Fragment.navigate(@IdRes id: Int) {
+    findNavController().navigateSafe(id)
+}
+
