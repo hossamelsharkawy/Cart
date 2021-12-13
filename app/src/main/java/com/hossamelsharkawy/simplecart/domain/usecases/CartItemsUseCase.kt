@@ -6,10 +6,10 @@ import com.hossamelsharkawy.simplecart.domain.ICartRepository
 import com.hossamelsharkawy.simplecart.domain.IProductsRepository
 
 
-suspend fun showAllCartItems(
+/*suspend fun showAllCartItems(
     productsRepo: IProductsRepository,
     cartRepository: ICartRepository,
-): Products = showAllProducts(productsRepo, cartRepository).filter { it.qtyInCart > 0 }
+): Products = showAllProducts(productsRepo, cartRepository).filter { it.qtyInCart > 0 }*/
 
 
 suspend fun Product.addToCart(cartRepository: ICartRepository) {
@@ -23,4 +23,26 @@ suspend fun Product.plusQtyInCart(cartRepository: ICartRepository) {
 suspend fun Product.minQtyInCart(cartRepository: ICartRepository) {
     cartRepository.decreaseCartItemQty(this)
 }
+
+
+suspend fun showAllCartItems(
+    productsRepo: IProductsRepository,
+    cartRepo: ICartRepository,
+): Products =
+    cartRepo
+        .getCartItems()
+        ?.associateBy { it.itemId }
+        ?.run {
+            productsRepo
+                .getProducts()
+                ?.filter { c ->
+                    this.containsKey(c.id) // check if the product in cartItem is exist productsMap.
+                }
+                ?.map { p ->
+                    p.apply { qtyInCart = this@run[p.id]?.qty ?: 0 }
+                }
+        } ?: arrayListOf()
+
+
+
 

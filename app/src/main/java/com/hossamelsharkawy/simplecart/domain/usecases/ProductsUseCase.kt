@@ -3,18 +3,25 @@ package com.hossamelsharkawy.simplecart.domain.usecases
 import com.hossamelsharkawy.simplecart.data.entities.Products
 import com.hossamelsharkawy.simplecart.domain.ICartRepository
 import com.hossamelsharkawy.simplecart.domain.IProductsRepository
-import kotlinx.coroutines.flow.Flow
-
+import kotlinx.coroutines.*
 
 suspend fun showAllProducts(
     productsRepo: IProductsRepository,
     cartRepo: ICartRepository,
 ): Products =
-    productsRepo.getProducts().apply {
-        cartRepo.getCartItems()
-            ?.forEach { cartItem ->
-                this?.find { it.id == cartItem.itemId }
-                    ?.qtyInCart = cartItem.qty
-            }
-    }?: arrayListOf()
+    cartRepo
+        .getCartItems()
+        ?.associateBy { it.itemId }
+        ?.run {
+            productsRepo
+                .getProducts()
+                ?.map { p ->
+                    p.apply { qtyInCart = this@run[p.id]?.qty ?: 0 }
+                }
+        }
+        ?: productsRepo.getProducts()
+        ?: arrayListOf()
+
+
+
 

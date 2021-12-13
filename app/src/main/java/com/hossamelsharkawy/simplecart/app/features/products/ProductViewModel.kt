@@ -31,6 +31,7 @@ class ProductViewModel @Inject internal constructor(
 
 
 
+
     fun openCart() {
         launch { uIRoute.navToCartItems() }
     }

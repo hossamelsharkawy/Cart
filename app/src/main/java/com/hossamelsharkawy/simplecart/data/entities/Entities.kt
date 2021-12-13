@@ -14,9 +14,8 @@ data class Product(
 
     var price: String? = null,
     var price_new: String? = null,
-    var has_discount: Boolean = false,
-
-    ) : BaseObservable() {
+    var has_discount: Boolean = false
+) : BaseObservable() {
     @get:Bindable
     var qtyInCart: Int = 0
         set(value) {
@@ -27,6 +26,9 @@ data class Product(
     fun getItemCartPrice() = price_new?.toFloat() ?: 0f * qtyInCart
 
     fun getPriceString() = getItemCartPrice().toPriceString()
+
+
+    override fun toString() = "ID:$id QTY:$qtyInCart "
 
     override fun hashCode(): Int {
         return id.hashCode()
@@ -53,7 +55,10 @@ typealias CartItems = List<CartItem>
 data class CartItem(
     val itemId: Int,
     var qty: Int = 0
-) : Serializable
+) : Serializable {
+
+    override fun toString() = "$itemId"
+}
 
 
 

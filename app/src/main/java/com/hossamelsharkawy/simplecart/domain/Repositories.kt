@@ -1,6 +1,7 @@
 package com.hossamelsharkawy.simplecart.domain
 
 import com.hossamelsharkawy.simplecart.data.entities.*
+import kotlinx.coroutines.flow.Flow
 
 interface IProductsDataSource {
     @Throws(Exception::class)
@@ -24,6 +25,15 @@ interface ICartRepository {
     suspend fun isCartValid(): Boolean = true
     suspend fun restoreFromLocalSource(): CartItems? = null
 }
+
+interface ICartRepositoryFlow {
+    suspend fun getCartItems(): Flow<CartItems>?
+    suspend fun addNewCartItem(product: Product): Flow<CartItems>
+    suspend fun increaseCartItemQty(product: Product): Flow<CartItems>
+    suspend fun decreaseCartItemQty(product: Product): Flow<CartItem>
+    suspend fun restoreFromLocalSource(): Flow<CartItem>
+}
+
 //for tech
 interface ICartDataSource {
     suspend fun getCartItemsList(): CartItems? = null

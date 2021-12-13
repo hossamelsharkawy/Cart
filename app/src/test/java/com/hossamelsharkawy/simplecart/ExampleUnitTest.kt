@@ -1,15 +1,7 @@
 package com.hossamelsharkawy.simplecart
 
-import com.hossamelsharkawy.base.extension.launchOnUI
-import com.hossamelsharkawy.simplecart.data.entities.CartItem
-import com.hossamelsharkawy.simplecart.data.entities.CartItems
-import com.hossamelsharkawy.simplecart.data.entities.Product
-import com.hossamelsharkawy.simplecart.domain.ICartRepository
-import com.hossamelsharkawy.simplecart.domain.IProductsRepository
-import com.hossamelsharkawy.simplecart.domain.usecases.showAllProducts
+import org.junit.Assert.assertEquals
 import org.junit.Test
-
-import org.junit.Assert.*
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -23,29 +15,5 @@ class ExampleUnitTest {
     }
 
 
-    @Test
-    fun aa() {
-
-        val productRepository = object : IProductsRepository {
-
-        }
-
-        val crtRepository = object : ICartRepository {
-
-            override suspend fun getCartItems(): CartItems? {
-                TODO("Not yet implemented")
-            }
-
-            override suspend fun addNewCartItem(product: Product): CartItem {
-                TODO("Not yet implemented")
-            }
-
-        }
-
-        launchOnUI {
-            val xx = showAllProducts(productRepository, crtRepository)
-        }
-
-    }
 }
 
