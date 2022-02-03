@@ -27,7 +27,7 @@
             android:id="@+id/img_image"
             android:layout_width="@dimen/_45sdp"
             android:layout_height="0dp"
-            app:imageUrl="@{item.image}"
+            app:imageUrl="@{item.smallImage}"
 
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

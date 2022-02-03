@@ -24,6 +24,7 @@ interface ICartRepository {
     suspend fun decreaseCartItemQty(product: Product): CartItem? = null
     suspend fun isCartValid(): Boolean = true
     suspend fun restoreFromLocalSource(): CartItems? = null
+    suspend fun clear(): Nothing? = null
 }
 
 interface ICartRepositoryFlow {

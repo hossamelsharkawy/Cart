@@ -18,7 +18,9 @@ suspend fun showAllProducts(
                 ?.map { p ->
                     p.apply { qtyInCart = this@run[p.id]?.qty ?: 0 }
                 }
-        }
+        }/*?.sortedBy {
+          it.title?.length
+        }*/
         ?: productsRepo.getProducts()
         ?: arrayListOf()
 

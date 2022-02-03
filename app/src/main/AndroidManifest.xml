@@ -11,11 +11,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.SimpleCart">
+        android:theme="@style/Theme.SimpleCart"
+
+        >
         <activity
             android:name=".app.features.MainActivity"
             android:exported="true"
-            android:screenOrientation="fullSensor"
+            android:screenOrientation="portrait"
             android:label="@string/app_name"
             android:theme="@style/Theme.SimpleCart.NoActionBar">
             <intent-filter>

@@ -45,4 +45,11 @@ suspend fun showAllCartItems(
 
 
 
+suspend fun clearCart(cartRepository: ICartRepository) {
+    cartRepository
+        .getCartItems()
+
+
+}
+
 

@@ -26,6 +26,12 @@ class DefaultCartRepository @Inject constructor(
     var cartItemsSparseArray: SparseArray<CartItem>? = null
         private set
 
+    override suspend fun clear(): Nothing? {
+        cartLocalDataSource.removeAllCartItems()
+        cartItemsSparseArray?.clear()
+        return null
+    }
+
     override suspend fun getCartItems(): CartItems? = mutex.withLock {
         return cartItemsSparseArray?.asList()
             ?: restoreFromLocalSource()
@@ -110,6 +116,8 @@ class DefaultCartRepository @Inject constructor(
 
 
     private suspend fun CartItem.saveInLocal() = cartLocalDataSource.saveCartItem(this)!!
+
+
 
 }
 

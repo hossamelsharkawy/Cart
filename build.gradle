@@ -1,16 +1,19 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-    ext.kotlin_version = "1.6.0"
-    ext.hilt_version = '2.40.4'
+    ext.kotlin_version = "1.6.10"
+    ext.composeVersion = '1.2.0-alpha02'
+    ext.hilt_version = '2.40.5'
 
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.0.3'
+        classpath 'com.android.tools.build:gradle:7.1.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
         //  classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.15'
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -113,7 +116,7 @@ deps.lifecycle = lifecycle
                 savedstate             : "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version",
 
                 extensions             : "androidx.lifecycle:lifecycle-extensions:2.2.0", //https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-extensions
-                viewmodel              : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",//https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-viewmodel-ktx
+                //viewmodel              : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",//https://mvnrepository.com/artifact/androidx.lifecycle/lifecycle-viewmodel-ktx
 
                 fragment_ktx           : "androidx.fragment:fragment-ktx:1.4.0",// https://mvnrepository.com/artifact/androidx.fragment/fragment-ktx
                 activity               : "androidx.activity:activity-ktx:1.4.0" // https://mvnrepository.com/artifact/androidx.activity/activity-ktx

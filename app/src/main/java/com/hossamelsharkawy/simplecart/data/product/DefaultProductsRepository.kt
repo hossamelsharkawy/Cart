@@ -14,13 +14,15 @@ class DefaultProductsRepository @Inject constructor(
     private var cachedProducts: Products? = null
 
     override suspend fun getProducts(forceUpdate: Boolean): Products? {
-        return fetchProductsFromRemoteOrLocal()
+      //  return fetchProductsFromRemoteOrLocal()
+
+        return productsLocalDataSource.getProducts()
     }
 
     private suspend fun fetchProductsFromRemoteOrLocal(): Products? {
-        if (cachedProducts == null) {
-            cachedProducts = productsRemoteDataSource.getProducts()
-        }
+         if (cachedProducts == null) {
+          cachedProducts = productsRemoteDataSource.getProducts()
+      }
         return cachedProducts ?: productsLocalDataSource.getProducts()
     }
 
