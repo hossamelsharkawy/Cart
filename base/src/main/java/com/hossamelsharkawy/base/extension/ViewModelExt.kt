@@ -86,7 +86,7 @@ fun <T> Flow<T>.shareInEver(demoViewModel: ViewModel) = this.shareIn(
 inline fun <T> AppCompatActivity.collect(flow: Flow<T>, crossinline block: (T) -> Unit) =
     lifecycleScope.launch {
         flow
-            .flowWithLifecycle(this@collect.lifecycle)
+            .flowWithLifecycle(lifecycle =this@collect.lifecycle)
             .collect { action ->
                 block.invoke(action)
             }
@@ -255,6 +255,7 @@ class ViewModelState<T>(
         }
 
 
+
     suspend fun emit(value: T) {
         _flow.emit(value)
     }
@@ -282,10 +283,10 @@ class ViewModelShared<T>(
     }
 }
 
-fun <T> T.vmStateShort(viewModel: ViewModel) = ViewModelState(this, { it.stateInShort(viewModel) })
+fun <T> T.vmStateShort(viewModel: ViewModel) = ViewModelState(this) { it.stateInShort(viewModel) }
 
 fun <T> T.vmStateLong(viewModel: ViewModel) =
-    ViewModelState(this, { it.stateInLong(viewModel, this) })
+    ViewModelState(this) { it.stateInLong(viewModel, this) }
 
 
 fun <T> T.vmState(viewModel: ViewModel) = MutableStateFlow(this).stateInShort(viewModel)

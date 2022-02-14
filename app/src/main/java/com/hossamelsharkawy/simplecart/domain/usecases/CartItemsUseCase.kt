@@ -20,6 +20,10 @@ suspend fun Product.plusQtyInCart(cartRepository: ICartRepository) {
     cartRepository.increaseCartItemQty(this)
 }
 
+suspend fun Product.selectQtyInCart( qty: Int,cartRepository: ICartRepository) {
+    cartRepository.selectQtyInCart(qty,this)
+}
+
 suspend fun Product.minQtyInCart(cartRepository: ICartRepository) {
     cartRepository.decreaseCartItemQty(this)
 }

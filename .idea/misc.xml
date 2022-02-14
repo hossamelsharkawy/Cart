@@ -28,9 +28,12 @@
         <entry key="../../../../layout/compose-model-1642844618368.xml" value="0.37592592592592594" />
         <entry key="../../../../layout/compose-model-1642846573119.xml" value="0.33" />
         <entry key="../../../../layout/compose-model-1642881878191.xml" value="0.4281298299845441" />
+        <entry key="../../../../layout/compose-model-1643908948134.xml" value="1.6776315789473684" />
+        <entry key="../../../../layout/compose-model-1644836877616.xml" value="0.18876689189189189" />
         <entry key="../../../../layout/custom_preview.xml" value="0.43385416666666665" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.44583333333333336" />
         <entry key="app/src/main/res/drawable/ic_logoo.xml" value="0.5277777777777778" />
+        <entry key="app/src/main/res/drawable/ic_shop_svgrepo_com.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.23333333333333334" />
         <entry key="app/src/main/res/layout/app_bar_home.xml" value="0.415625" />
         <entry key="app/src/main/res/layout/bottom_sheet_persistent.xml" value="0.4296875" />
@@ -43,6 +46,13 @@
         <entry key="app/src/main/res/layout/product_add_to_cart.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/product_item.xml" value="0.23125" />
         <entry key="app/src/main/res/layout/product_price_ui.xml" value="0.4197916666666667" />
+        <entry key="app/src/main/res/menu/menu_main.xml" value="0.4078125" />
+        <entry key="base/src/main/res/drawable/ic_baseline_android_24.xml" value="0.2695" />
+        <entry key="base/src/main/res/drawable/ic_retry.xml" value="0.2695" />
+        <entry key="base/src/main/res/layout/app_bar.xml" value="0.4078125" />
+        <entry key="base/src/main/res/layout/error_view.xml" value="0.4078125" />
+        <entry key="base/src/main/res/layout/loading_view.xml" value="0.4078125" />
+        <entry key="base/src/main/res/layout/main_list_con.xml" value="0.4078125" />
         <entry key="style/src/main/res/drawable/btn_add_back.xml" value="0.44583333333333336" />
         <entry key="style/src/main/res/drawable/btn_base_corner.xml" value="0.49444444444444446" />
         <entry key="style/src/main/res/drawable/btn_gray.xml" value="0.49444444444444446" />

@@ -6,7 +6,6 @@ import androidx.datastore.core.CorruptionException
 import androidx.datastore.core.DataStore
 import androidx.datastore.core.Serializer
 import androidx.datastore.dataStore
-import androidx.lifecycle.asLiveData
 import com.google.protobuf.InvalidProtocolBufferException
 import com.hossamelsharkawy.simplecart.CartPreferences
 import com.hossamelsharkawy.simplecart.data.entities.CartItem
@@ -73,7 +72,6 @@ class CartLocalDataSource(context: Context) : ICartDataSource {
     override suspend fun getLastEditTime() = cartPreferences.firstOrNull()?.lastEditTime
 
 
-    fun getCartItemsAsLiveData() = cartPreferences.asLiveData()
 
 
     private val cartPreferences = dataStore.data

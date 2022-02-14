@@ -1,21 +1,21 @@
 package com.hossamelsharkawy.simplecart.app.features.products
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateListOf
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
+import androidx.compose.runtime.snapshots.SnapshotStateList
 import androidx.lifecycle.ViewModel
 import com.hossamelsharkawy.base.extension.launch
-import com.hossamelsharkawy.base.extension.shareInShort
 import com.hossamelsharkawy.base.extension.vmStateShort
 import com.hossamelsharkawy.simplecart.app.UIRouter
+import com.hossamelsharkawy.simplecart.app.features.cart.CartStates
+import com.hossamelsharkawy.simplecart.app.features.products.ProductsMapper.toGridItems
+import com.hossamelsharkawy.simplecart.app.features.products.ProductsMapper.toMapByCategory
+import com.hossamelsharkawy.simplecart.app.util.util.refresh
+import com.hossamelsharkawy.simplecart.app.util.util.swapList
+import com.hossamelsharkawy.simplecart.data.entities.Category
 import com.hossamelsharkawy.simplecart.data.entities.Product
 import com.hossamelsharkawy.simplecart.domain.ICartRepository
 import com.hossamelsharkawy.simplecart.domain.IProductsRepository
-import com.hossamelsharkawy.simplecart.domain.usecases.minQtyInCart
-import com.hossamelsharkawy.simplecart.domain.usecases.plusQtyInCart
-import com.hossamelsharkawy.simplecart.domain.usecases.showAllCartItems
-import com.hossamelsharkawy.simplecart.domain.usecases.showAllProducts
+import com.hossamelsharkawy.simplecart.domain.usecases.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -24,23 +24,22 @@ import javax.inject.Inject
 class ProductViewModel @Inject internal constructor(
     private val productsRepository: IProductsRepository,
     private val cartRepository: ICartRepository,
-    private val uIRoute: UIRouter
+    val uIRoute: UIRouter
 ) : ViewModel() {
 
-
-    val itemsCount = 0.vmStateShort(this)
     val dataLoading = true.vmStateShort(this)
-    val itemsFlow = listOf<Product>()
-        .vmStateShort(this)
 
-    val cartItemsFlow = listOf<Product>().vmStateShort(this)
-    val navActionFlow = uIRoute.navAction.shareInShort(this)
-
-
-    var itemsState by mutableStateOf(listOf<Product>())
+    var itemsState = mutableStateListOf<Product>()
         private set
 
+    var itemsByCategoryState = mutableStateMapOf<Category, SnapshotStateList<Product>>()
+        private set
 
+    var itemsByCategoryStateFlat = mutableStateListOf<GridItem<*>>()
+        private set
+
+    var cart by mutableStateOf(CartStates)
+        private set
 
     fun openCart() {
         launch { uIRoute.navToCartItems() }
@@ -50,6 +49,9 @@ class ProductViewModel @Inject internal constructor(
         launch { uIRoute.navToNotification() }
     }
 
+    fun openProductInfo(product: Product) {
+        launch { uIRoute.navToProductInfo(product) }
+    }
 
     init {
         fetchProducts()
@@ -58,47 +60,70 @@ class ProductViewModel @Inject internal constructor(
     private fun fetchProducts() = launch {
         dataLoading.emit(true)
         showAllProducts(productsRepository, cartRepository)
-            .also {
-             //   itemsState = arrayListOf()
-                itemsState =it
-              //  itemsFlow.value = ArrayList(it)
-            }
+            .also { itemsState.swapList(it) }
+            .also { itemsByCategoryState.swapList(it.toMapByCategory()) }
+            .also { itemsByCategoryStateFlat.swapList(it.toGridItems(3)) }
             .also { dataLoading.value = false }
             .also { fetchCartItems() }
     }
 
     private fun fetchCartItems() = launch {
         showAllCartItems(productsRepository, cartRepository)
-            .also { cartItemsFlow.emit(it) }
-            .let { itemsCount.emit(it.sumOf { cartItem -> cartItem.qtyInCart }) }
+            .also { cart.cartItemsState.swapList(it) }
+            .also {
+                cart.itemsCountState.value =
+                    it.sumOf { cartItem -> cartItem.qtyInCart }
+                        .let { itemCount -> if (itemCount >= 99) "+99" else " $itemCount" }
+            }
+            .also {
+                cart.subPriceState.value = it.sumOf { cartItem -> cartItem.cartPrice.toDouble() }
+            }
+            .also { cart.deliveryFeeState.value = 10.0 }
+            .let {
+                cart.totalPriceState.value = cart.subPriceState.value + cart.deliveryFeeState.value
+            }
+    }
+
+
+    private fun Product.update() {
+        itemsByCategoryState[category]?.refresh()
+        itemsByCategoryStateFlat.refresh()
     }
 
     fun addToCart(product: Product) = launch {
-        cartRepository.addNewCartItem(product)
+        product
+            .also { it.addToCart(cartRepository) }
+            .also { it.update() }
+            .let { fetchCartItems() }
+    }
+
+    fun plusQty(product: Product) = launch {
+        product
+            .also { it.plusQtyInCart(cartRepository) }
+            .also { it.update() }
+            .let { fetchCartItems() }
+    }
+
+    fun setQty(qty: Int, product: Product) = launch {
+        product
+            .also { it.selectQtyInCart(qty, cartRepository) }
+            .also { it.update() }
+            .let { fetchCartItems() }
+    }
+
+
+    fun minQty(product: Product) = launch {
+        product
+            .also { it.minQtyInCart(cartRepository) }
+            .also { it.update() }
+            .let { fetchCartItems() }
+
+    }
+
+    fun clearCart() = launch {
+        clearCart(cartRepository)
             .also { fetchCartItems() }
             .let { fetchProducts() }
     }
-
-    fun onPlusQty(product: Product) = launch {
-        product
-            .plusQtyInCart(cartRepository)
-            .let { fetchCartItems() }
-            .let { fetchProducts() }
-
-    }
-
-    fun onMinQty(product: Product) = launch {
-        product
-            .minQtyInCart(cartRepository)
-            .let { fetchCartItems() }
-            .let { fetchProducts() }
-
-    }
 }
-
-
-
-
-
-
 

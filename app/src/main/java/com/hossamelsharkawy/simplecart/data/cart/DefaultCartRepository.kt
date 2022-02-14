@@ -6,15 +6,10 @@ import com.hossamelsharkawy.base.extension.toMaxCalendar
 import com.hossamelsharkawy.simplecart.data.entities.CartItem
 import com.hossamelsharkawy.simplecart.data.entities.CartItems
 import com.hossamelsharkawy.simplecart.data.entities.Product
-import com.hossamelsharkawy.simplecart.data.entities.Products
-import com.hossamelsharkawy.simplecart.data.source.remote.APIService
 import com.hossamelsharkawy.simplecart.domain.ICartDataSource
 import com.hossamelsharkawy.simplecart.domain.ICartRepository
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.sync.Mutex
 import kotlinx.coroutines.sync.withLock
-import retrofit2.http.GET
 import java.util.*
 import javax.inject.Inject
 
@@ -38,6 +33,12 @@ class DefaultCartRepository @Inject constructor(
                 .takeIf { isCartValid() }
     }
 
+    override suspend fun selectQtyInCart(qty: Int, product: Product): CartItem? {
+        return product
+            .apply { qtyInCart = qty }
+            .addToCart()
+            .saveInLocal()
+    }
 
     override suspend fun addNewCartItem(product: Product): CartItem = mutex.withLock {
         return product
@@ -116,7 +117,6 @@ class DefaultCartRepository @Inject constructor(
 
 
     private suspend fun CartItem.saveInLocal() = cartLocalDataSource.saveCartItem(this)!!
-
 
 
 }

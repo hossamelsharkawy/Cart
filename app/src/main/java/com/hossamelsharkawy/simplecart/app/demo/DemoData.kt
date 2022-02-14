@@ -2,7 +2,7 @@ package com.hossamelsharkawy.simplecart.app.demo
 
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
-import com.hossamelsharkawy.simplecart.app.features.MainActivity
+import com.hossamelsharkawy.simplecart.app.features.home.MainActivity
 import com.hossamelsharkawy.simplecart.data.cart.CartLocalDataSource
 import com.hossamelsharkawy.simplecart.data.entities.CartItem
 import com.hossamelsharkawy.simplecart.domain.ICartRepository
@@ -16,10 +16,6 @@ fun MainActivity.tesCart(
     cartRepository: ICartRepository,
     productsRepository: IProductsRepository
 ) {
-
-    cartLocalDataSource.getCartItemsAsLiveData().observe(this@tesCart) {
-        Log.d("cartPreferences", it.cartItemsMap.toString())
-    }
 
 
     lifecycleScope.launchWhenCreated {
@@ -45,8 +41,7 @@ fun MainActivity.tesCartIsValid(
     lifecycleScope.launchWhenCreated {
 
 
-
-        Log.d("cartPreferences cart",   cartRepository.isCartValid().toString())
+        Log.d("cartPreferences cart", cartRepository.isCartValid().toString())
 
 
     }

@@ -1,7 +1,6 @@
 package com.hossamelsharkawy.base.net
 
 import android.widget.ImageView
-import com.bumptech.glide.Glide
 import com.hossamelsharkawy.base.R
 import com.hossamelsharkawy.base.image.BaseImageLoading
 import com.hossamelsharkawy.base.image.ImageLoading

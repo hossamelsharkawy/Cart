@@ -1,5 +1,6 @@
 package com.hossamelsharkawy.simplecart.data.entities
 
+import androidx.compose.runtime.mutableStateOf
 import com.hossamelsharkawy.simplecart.app.features.products.getBaseImageUrl
 import com.hossamelsharkawy.simplecart.app.features.products.kiloUnit
 import java.io.Serializable
@@ -20,7 +21,7 @@ data class Product(
     var relatedRecipes: List<Recipe>? = null
 ) {
 
-    val cartPrice: Float? get() = price?.toFloat()?.times(qtyInCart)
+    val cartPrice: Float get() = price?.toFloat()?.times(qtyInCart) ?: 0f
 
     override fun toString() = "ID:$id QTY:$qtyInCart "
 
@@ -39,9 +40,11 @@ data class Product(
 
     private fun getImage(size: Int) = getBaseImageUrl(size).plus(image)
 
-  fun getLargeImage() = getImage(700)
+    fun getLargeImage() = getImage(1200)
+
     //fun getLargeImage() = ""
-    fun getSmallImage() = getImage(200)
+    fun getSmallImage() = getImage(150)
+    fun priceString() = "$price LE"
 }
 
 
@@ -66,15 +69,28 @@ data class Favorite(
 ) : Serializable
 
 
-data class Category(var id: String, var maxView: Boolean = true)
+data class Category(var id: String, val index: Int) {
+
+    val maxViewState = mutableStateOf(true)
+
+    val remine: Int = 0
+
+    fun toggleMaxView() {
+        maxViewState.value = maxViewState.value.not()
+    }
+
+    override fun hashCode() = id.hashCode()
+
+    override fun toString() = "$id - ${maxViewState.value} - $index"
+}
+
 data class Recipe(var id: String)
 
 sealed class Unit(var value: Int, val name: String) {
     class GramUnit(value: Int, name: String = "Gr") : Unit(value, name)
     class KUnit(value: Int, name: String = "Kg") : Unit(value, name)
     class PackUnit(value: Int, name: String = "Pack") : Unit(value, name)
-
-    fun string() = "$value $name"
+    fun string() = "($value$name)"
 }
 
 

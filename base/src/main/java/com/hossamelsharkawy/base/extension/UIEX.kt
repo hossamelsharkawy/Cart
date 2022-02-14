@@ -6,19 +6,13 @@ import android.os.Handler
 import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.LayoutInflater
 import android.widget.EditText
 import androidx.annotation.IdRes
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
-import androidx.navigation.Navigation.findNavController
-import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.ListAdapter
 import com.google.android.material.tabs.TabLayout
 import com.hossamelsharkawy.base.R
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
 
 /**
  * Created by Hossam Elsharkawy
@@ -108,7 +102,4 @@ fun NavController.navigateSafe(@IdRes id: Int) {
         ?.let { navigate(id) }
 }
 
-fun Fragment.navigate(@IdRes id: Int) {
-    findNavController().navigateSafe(id)
-}
 

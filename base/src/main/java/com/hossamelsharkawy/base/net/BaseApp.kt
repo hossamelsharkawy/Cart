@@ -2,7 +2,6 @@ package com.hossamelsharkawy.base.net
 
 import android.app.Application
 import com.hossamelsharkawy.base.lang.LangUtils
-import kotlinx.coroutines.Job
 import okhttp3.OkHttpClient
 
 /**
@@ -13,7 +12,7 @@ on 8/27/2018.  time :11:40
  */
 object BaseApp {
 
-    lateinit var client:OkHttpClient
+    lateinit var client: OkHttpClient
 
     lateinit var app: Application
     var logo: Int = 0
@@ -22,8 +21,8 @@ object BaseApp {
 
     var lang = LangUtils.EN
 
-    fun isEn() =lang ==  LangUtils.EN
-    fun init(app: Application, client:OkHttpClient,  logo: Int , onCrashAction: () -> Unit ) {
+    fun isEn() = lang == LangUtils.EN
+    fun init(app: Application, client: OkHttpClient, logo: Int, onCrashAction: () -> Unit) {
         this.app = app
         this.onCrashAction = onCrashAction
         this.logo = logo
