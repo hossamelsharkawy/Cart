@@ -1,6 +1,7 @@
 package com.hossamelsharkawy.simplecart.app.features.products
 
 import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -10,49 +11,27 @@ import androidx.compose.foundation.lazy.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowDown
 import androidx.compose.runtime.*
-import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.constraintlayout.compose.ConstrainedLayoutReference
+import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.ConstraintLayoutScope
+import androidx.constraintlayout.compose.Dimension
 import coil.annotation.ExperimentalCoilApi
 import com.hossamelsharkawy.simplecart.app.features.cart.MyIconButtonAdd
 import com.hossamelsharkawy.simplecart.app.features.cart.MyIconButtonMin
 import com.hossamelsharkawy.simplecart.app.features.products.ProductsMapper.getRemainderRowsNumber
-import com.hossamelsharkawy.simplecart.app.ui.*
-import com.hossamelsharkawy.simplecart.app.ui.component.MyCard
-import com.hossamelsharkawy.simplecart.app.ui.component.MyColumnCenter
-import com.hossamelsharkawy.simplecart.app.ui.component.MyRowCenter
-import com.hossamelsharkawy.simplecart.app.ui.component.MyRowStart
-import com.hossamelsharkawy.simplecart.app.ui.theme.*
+import com.hossamelsharkawy.simplecart.app.ui.component.*
+import com.hossamelsharkawy.simplecart.app.ui.theme.MyColor
 import com.hossamelsharkawy.simplecart.data.entities.Category
 import com.hossamelsharkawy.simplecart.data.entities.Product
+import com.hossamelsharkawy.simplecart.data.entities.Products
+import com.hossamelsharkawy.simplecart.data.source.local.fakeCartEvent
+import com.hossamelsharkawy.simplecart.data.source.local.fakeProduct
 
-
-interface ProductsEvent {
-    fun onAddItemClick(product: Product)
-    fun onRemoveItemClick(product: Product)
-    fun onProductInfoClick(product: Product)
-    fun onSelectQtyClick(qty: Int, product: Product)
-}
-
-
-fun ProductViewModel.createProductEvent() = object : ProductsEvent {
-    override fun onAddItemClick(product: Product) {
-        plusQty(product)
-    }
-
-    override fun onRemoveItemClick(product: Product) {
-        minQty(product)
-    }
-
-    override fun onProductInfoClick(product: Product) {
-        openProductInfo(product)
-    }
-
-    override fun onSelectQtyClick(qty: Int, product: Product) {
-        setQty(qty, product)
-    }
-}
 
 /*@ExperimentalFoundationApi
 @Preview(
@@ -67,7 +46,7 @@ fun ProductViewModel.createProductEvent() = object : ProductsEvent {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ProductListUI(
+fun ProductListScreen(
     productsEvents: ProductsEvent = fakeCartEvent,
     productsMapState: Map<Category, List<Product>>,
     spanCont: Int,
@@ -89,8 +68,147 @@ fun ProductListUI(
                     entry.key.toggleMaxView()
                 }
 
-                categoryItems(spanCont, items, category = category, productsEvents)
+                categoryItems(spanCont, items, productsEvents)
             }
+    }
+}
+
+@OptIn(ExperimentalFoundationApi::class)
+@Composable
+fun ProductListSimpleScreen(
+    productsEvents: ProductsEvent = fakeCartEvent,
+    products: Products,
+    listState: LazyGridState = rememberLazyGridState(),
+) {
+
+    //val modifierPadding5 = Modifier.padding(start = 5.dp)
+
+    LazyVerticalGrid(
+        cells = GridCells.Adaptive(130.dp),
+        state = listState,
+        horizontalArrangement = Arrangement.Center,
+    ) {
+        items(
+            key = { it.id },
+            items = products
+        ) { item ->
+            ItemConstraintLayout(productsEvents, item)
+        }
+    }
+}
+
+val modifierImage = Modifier.size(70.dp)
+
+
+@Preview(widthDp = 320)
+@Composable
+fun ItemConstraintLayout(
+    productsEvents: ProductsEvent = fakeCartEvent,
+    item: Product = fakeProduct
+) {
+    MyCard {
+        ConstraintLayout(
+            modifier = Modifier.padding(5.dp),
+        ) {
+
+            val (
+                Image,
+                MyTitle,
+                MyPrice,
+                MySubtitle2,
+                MyIconButtonAdd,
+                MyNumberCenter,
+                MyIconButtonMin
+            ) = createRefs()
+
+
+            MyImageLoading(
+                url = item.getSmallImage(),
+                modifier = modifierImage.then(
+                    Modifier.constrainAs(Image) {
+                        top.linkTo(parent.top, margin = 5.dp)
+                    })
+            )
+
+            MyTitle(
+                text = "${item.title} ",
+                modifier = Modifier.constrainAs(MyTitle)
+                {
+                    top.linkTo(Image.bottom, margin = 5.dp)
+                    end.linkTo(MyIconButtonMin.start, margin = 5.dp)
+                    start.linkTo(parent.start, margin = 5.dp)
+                    bottom.linkTo(MyPrice.top)
+                    width = Dimension.fillToConstraints
+                }
+            )
+
+            MyPrice(item.priceString(), Modifier.constrainAs(MyPrice) {
+                top.linkTo(MyTitle.bottom)
+                start.linkTo(parent.start, margin = 5.dp)
+            })
+
+            MySubtitle2(item.unit.string(), MySubtitle2.end(MyPrice, this))
+
+            this(MyPrice ,MySubtitle2)
+
+            MyIconButtonAdd(Modifier.constrainAs(MyIconButtonAdd) {
+                end.linkTo(parent.end, margin = (-20).dp)
+                bottom.linkTo(parent.bottom)
+            }) {
+                productsEvents.onAddItemClick(
+                    item
+                )
+            }
+            MyNumberCenter(
+                Modifier.constrainAs(MyNumberCenter) {
+                    bottom.linkTo(MyIconButtonAdd.top)
+                    end.linkTo(MyIconButtonAdd.end)
+                    start.linkTo(MyIconButtonAdd.start)
+                },
+                text = item.qtyInCart.toString(),
+            )
+            MyIconButtonMin(Modifier.constrainAs(MyIconButtonMin) {
+                bottom.linkTo(MyNumberCenter.top)
+                end.linkTo(MyNumberCenter.end)
+                start.linkTo(MyNumberCenter.start)
+
+            }) {
+                productsEvents.onRemoveItemClick(
+                    item
+                )
+            }
+        }
+    }
+}
+
+private operator fun ConstraintLayoutScope.invoke(
+    myPrice: ConstrainedLayoutReference,
+    mySubtitle2: ConstrainedLayoutReference
+) {
+    myPrice.end(mySubtitle2, this)
+}
+
+private fun ConstrainedLayoutReference.end(
+    myPrice: ConstrainedLayoutReference,
+    constraintLayoutScope: ConstraintLayoutScope
+): Modifier {
+    with(constraintLayoutScope) {
+        return Modifier.constrainAs(this@end) {
+            start.linkTo(myPrice.end, margin = 5.dp)
+            top.linkTo(myPrice.top)
+        }
+    }
+}
+
+private fun ConstrainedLayoutReference.start(
+    myPrice: ConstrainedLayoutReference,
+    constraintLayoutScope: ConstraintLayoutScope
+): Modifier {
+    with(constraintLayoutScope) {
+        return Modifier.constrainAs(this@start) {
+            start.linkTo(myPrice.end, margin = 5.dp)
+            top.linkTo(myPrice.top)
+        }
     }
 }
 
@@ -116,12 +234,18 @@ fun LazyGridScope.categoryGirdItem(
             animationSpec = tween(durationMillis = 500)
         )
 
-        MyRowStart(Modifier.fillMaxWidth().padding(start = 15.dp  , bottom = 1.dp , top = 10.dp).clickable { onClick.invoke()}) {
-            MyTitleCenter2(text = category.id)
+        MyRowStart(
+            Modifier
+                .fillMaxWidth()
+                .padding(start = 7.dp, bottom = 0.dp, top = 10.dp)
+                .clickable { onClick.invoke() }) {
+            MyTitleCenter4(text = category.id)
             MyIconButtonSmall(
                 imageVector = Icons.Default.KeyboardArrowDown,
-                tint = MyColor.BottomNavigationBackgroundColor,
-                modifier = Modifier.rotate(animatedFloatState.value)
+                tint = MyColor.BlueDark,
+                modifier = Modifier
+                    .rotate(animatedFloatState.value)
+                    .align(CenterVertically)
             ) {
                 onClick.invoke()
             }
@@ -135,7 +259,6 @@ fun LazyGridScope.categoryGirdItem(
 fun LazyGridScope.categoryItems(
     spanCont: Int,
     products: List<Product>,
-    category: Category,
     productsEvents: ProductsEvent
 ) {
     products
@@ -166,14 +289,14 @@ fun ProductItem(
     val modifier = Modifier.clickable { productsEvent.onProductInfoClick(item) }
     MyCard {
         MyColumnCenter {
-            productInfo(modifier ,item, maxView)
+            ProductInfo(modifier, item, maxView)
             AnimatedVisibility(visible = maxView) {
                 MyColumnCenter {
                     MyRowCenter(modifier) {
                         MyPrice(text = item.priceString())
                         MySubtitle2(text = item.unit.string(), Modifier.padding(start = 5.dp))
                     }
-                    productItemQty(item, productsEvent)
+                    ProductItemQty(item, productsEvent)
                 }
 
             }
@@ -184,19 +307,18 @@ fun ProductItem(
 
 @OptIn(ExperimentalCoilApi::class)
 @Composable
-fun productInfo(
+fun ProductInfo(
     modifier: Modifier = Modifier,
     item: Product,
     maxView: Boolean
 ) {
     val size = if (maxView) 70.dp else 50.dp
-    MyImage(
+    MyImageLoading(
         url = item.getSmallImage(),
         modifier = Modifier
             //.shadow(0.5.dp, shape = RoundedCornerShape(50))
             //.clip(RoundedCornerShape(50))
-            .height(size)
-            .width(size)
+            .size(size)
             .then(modifier)
     )
 
@@ -211,8 +333,9 @@ fun productInfo(
 }
 
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
-fun productItemQty(
+fun ProductItemQty(
     item: Product,
     productsEvent: ProductsEvent
 ) {
@@ -223,12 +346,13 @@ fun productItemQty(
         if (item.qtyInCart != 0) {
             MyNumberCenter(
                 text = item.qtyInCart.toString(),
-                modifier = Modifier.align(Alignment.CenterVertically)
+                modifier = Modifier.align(CenterVertically)
             )
             MyIconButtonMin {
                 productsEvent.onRemoveItemClick(item)
             }
         }
+
     }
 }
 
@@ -256,7 +380,7 @@ fun LazyGridScope.productGirdItem(product: Product, productsEvents: ProductsEven
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ProductsListGridItems(
+fun ProductsListGridItemsScreen(
     gridItems: List<GridItem<*>>,
     productsEvents: ProductsEvent = fakeCartEvent,
     spanCont: Int,
@@ -281,7 +405,4 @@ fun ProductsListGridItems(
         }
     }
 }
-
-
-
 

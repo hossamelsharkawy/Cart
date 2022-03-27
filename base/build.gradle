@@ -43,7 +43,6 @@ dependencies {
     implementation picasso.values()
     implementation androidNavigation.values()
 
-    implementation  "com.squareup.okhttp3:okhttp"
     implementation project(':style')
   //  implementation project(':req')
 }

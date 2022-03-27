@@ -8,17 +8,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.google.accompanist.flowlayout.FlowRow
-import com.hossamelsharkawy.simplecart.app.ui.MyButton
-import com.hossamelsharkawy.simplecart.app.ui.MyIconButton
-import com.hossamelsharkawy.simplecart.app.ui.component.MaterialRadioButtonGroupComponent
+import com.hossamelsharkawy.simplecart.app.ui.component.MyButton
+import com.hossamelsharkawy.simplecart.app.ui.component.MyIconButton
 import com.hossamelsharkawy.simplecart.app.ui.theme.MyColor
 
 
 @Composable
 fun MyIconButtonAdd(
+    modifier: Modifier = Modifier,
     onClick: () -> Unit,
 ) {
     MyIconButton(
+        modifier = modifier,
         imageVector = Icons.Outlined.Add,
         tint = MyColor.green,
         onClick = onClick
@@ -27,15 +28,20 @@ fun MyIconButtonAdd(
 
 @Composable
 fun MyIconButtonMin(
+    modifier: Modifier = Modifier,
     onClick: () -> Unit,
 ) {
     MyIconButton(
+        modifier = modifier,
         //   imageVector = FontAwesomeIcons ,
         imageVector = Icons.Outlined.Clear,
         tint = MyColor.red,
         onClick = onClick
     )
 }
+
+
+
 
 
 @Composable
@@ -46,7 +52,7 @@ fun SelectQtyUI(
     val padding = Modifier.padding(1.dp)
 
 
-    MaterialRadioButtonGroupComponent()
+    //MaterialRadioButtonGroupComponent()
     FlowRow {
         /*  MyBtnAddToCart("Add 1/2 Kg") {
               onClick(1)

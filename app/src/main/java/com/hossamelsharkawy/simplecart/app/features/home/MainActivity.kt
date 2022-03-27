@@ -25,14 +25,14 @@ class MainActivity : AppCompatActivity() {
         WindowCompat.setDecorFitsSystemWindows(window, true)
         setContent {
             ProvideWindowInsets {
-                ProvideImageLoader {
+               // ProvideImageLoader {
                     AppTheme {
                         Surface {
                             AppHome()
                         }
                     }
                 }
-            }
+          //  }
         }
     }
 }

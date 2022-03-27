@@ -9,7 +9,7 @@
     <color name="colorAccent">#373447</color>
     <color name="colorPrimaryDark">@color/c1</color>
 
-    <color name="c1">#793366</color>
+    <color name="c1">#535353</color>
     <color name="c2">#B76BA2</color>
     <color name="c3">#FFF8ECF5</color>
 
@@ -20,7 +20,7 @@
     <color name="app_grey_3">#454545</color>
     <color name="app_grey_4">#373447</color>
 
-    <color name="appBarColor">@color/c1</color>
+    <color name="appBarColor">#9A202428</color>
     <color name="appBarColor2">@color/white</color>
 
     <color name="reddish_orange">#f35818</color>

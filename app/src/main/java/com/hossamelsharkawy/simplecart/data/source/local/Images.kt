@@ -50,13 +50,45 @@ object Images {
     const val Lemon = "large_218c6ebe-eb80-4e7b-bd72-8453d71c6c21.jpg"
     const val Beans = "large_908474d3-65be-4cd2-ae11-b1fa7079fd75.jpg"
     const val Eggplant = "large_261e5f84-bd83-4d72-9425-c4615d8642f2.jpg"
-    const val Tomato  ="large_cfacb337-14bd-42f7-bb7b-1a8a5c8521a4.jpg"
+    const val Tomato = "large_cfacb337-14bd-42f7-bb7b-1a8a5c8521a4.jpg"
+
+
+    const val GingerRoot = "large_d9f702bc-f574-41a3-afb5-19974845cbef.jpg"
+
+    const val YellowPeach = "large_86939e56-289e-4e73-8e22-ae74a053282b.jpg"
 
 /*________________________________________________________________________________*/
 
     const val Salmon = "large_e9576add-dd98-4a5b-883c-1881f960ea09.jpg"
+
+    const val Fillet = "large_f3179ded-499b-40c8-98df-68f3f7a88128.jpg"
+    const val SnapperFillet = "large_43175638-db0c-458d-848b-5a0945a31b8d.jpg"
+    const val SoleFillet = "large_f6a36d54-5dda-4308-a8e9-4d0425f90660.jpg"
+    const val Shrimp = "large_0d6b9088-a82c-4832-ac2a-499fc58b1bf6.JPG"
+
+
 /*________________________________________________________________________________*/
 
     const val Cucumber = "large_c3c55096-5e83-4b5b-8517-f96ac96c7d33.jpg"
+    const val RibeyeSteak = "large_f0ddacab-a052-472b-96fa-8cff27e1de96.jpg"
+    const val Steak = "large_fa2afe17-4efb-4f12-8e9c-506715c1b6e6.jpg"
+    const val BeefStewMeat = "large_dd7baa17-2c4e-4826-8fe9-af40dcbba29f.jpg"
+    const val BeefChuckRoast = "large_979de6c8-08b4-4c53-90d0-98c63949f75b.jpg"
+    const val LambRibChops = "large_c276c0b1-75f9-4836-b906-88ea0b1abab2.jpg"
+    const val LambStewMeat = "large_3736a36b-d249-4f4b-9020-2a5b06f2d200.jpg"
+    const val LambBoneLeg = "large_a28d6ffc-e747-448d-ac23-291f4d97bf33.jpeg"
+    const val GroundBeef = "large_183d8cea-3117-4104-a51d-7cb44387092e.jpg"
+    const val BeefLiver = "large_5d9903ac-876a-4c8d-9d02-64c77acf9f48.jpg"
+
+    /*________________________________________________________________________________*/
+    const val WholeChicken = "large_698afaed-56ad-41fd-83ba-cc202761e071.jpg"
+    const val ChickenBreast = "large_f087606d-5ac7-4cb2-bb21-7f779c4c5e2b.jpg"
+    const val WholeRoastedChicken = "large_fca4ddf5-62f4-43a3-b4cc-4e71bc15301a.jpg"
+    const val WholeChickenLegs = "large_bcfaf2ab-59d2-4802-8c2f-747e2eadcfab.jpg"
+
+    const val ChickenLiver = "large_83b0230c-f0bd-4097-b321-6b013d07f57a.jpg"
+
+    const val ChickenHearts = "large_125a85fa-3f9a-4297-89e7-28b42cbdcccd.jpg"
+
 
 }

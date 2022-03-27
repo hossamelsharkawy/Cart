@@ -1,16 +1,20 @@
-package com.hossamelsharkawy.simplecart.app.ui
+package com.hossamelsharkawy.simplecart.app.ui.component
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.text.withStyle
 import com.hossamelsharkawy.simplecart.app.ui.theme.MyFont
 import com.hossamelsharkawy.simplecart.app.ui.theme.MyTypography
 
+//https://developer.android.com/jetpack/compose/text
 @Composable
 fun MyTitle(
     text: String?,
@@ -47,6 +51,14 @@ fun MyTitleCenter2(
 }
 
 @Composable
+fun MyTitleCenter4(
+    text: String, modifier: Modifier = Modifier,
+    style: TextStyle = MyTypography.h4,
+) {
+    MyTitleCenter(text, modifier, style)
+}
+
+@Composable
 fun MyNumber(
     text: Any,
     modifier: Modifier = Modifier,
@@ -72,8 +84,8 @@ fun MyNumber(
 
 @Composable
 fun MyNumberCenter(
-    text: Any,
     modifier: Modifier = Modifier,
+    text: Any,
     textAlign: TextAlign = TextAlign.Center,
 ) {
     MyNumber(text, modifier, textAlign)
@@ -136,5 +148,23 @@ fun MySubtitle3(
         style = TextStyle(
             textAlign = TextAlign.Center
         )
+    )
+}
+
+
+@Composable
+fun MultipleStylesInText() {
+    Text(
+        buildAnnotatedString {
+            withStyle(style = SpanStyle(color = Color.Blue)) {
+                append("H")
+            }
+            append("ello ")
+
+            withStyle(style = SpanStyle(fontWeight = FontWeight.Bold, color = Color.Red)) {
+                append("W")
+            }
+            append("orld")
+        }
     )
 }

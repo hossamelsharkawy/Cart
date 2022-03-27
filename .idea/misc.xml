@@ -30,7 +30,13 @@
         <entry key="../../../../layout/compose-model-1642881878191.xml" value="0.4281298299845441" />
         <entry key="../../../../layout/compose-model-1643908948134.xml" value="1.6776315789473684" />
         <entry key="../../../../layout/compose-model-1644836877616.xml" value="0.18876689189189189" />
+        <entry key="../../../../layout/compose-model-1645353036062.xml" value="1.3065420560747663" />
+        <entry key="../../../../layout/compose-model-1645355110317.xml" value="0.75" />
+        <entry key="../../../../layout/compose-model-1646051401976.xml" value="0.1" />
         <entry key="../../../../layout/custom_preview.xml" value="0.43385416666666665" />
+        <entry key="app/src/main/res/drawable/ic_bell.xml" value="0.3495" />
+        <entry key="app/src/main/res/drawable/ic_cart.xml" value="0.3465" />
+        <entry key="app/src/main/res/drawable/ic_instacart_logo.xml" value="0.3455" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.44583333333333336" />
         <entry key="app/src/main/res/drawable/ic_logoo.xml" value="0.5277777777777778" />
         <entry key="app/src/main/res/drawable/ic_shop_svgrepo_com.xml" value="0.1" />
@@ -59,6 +65,7 @@
         <entry key="style/src/main/res/drawable/btn_min_back.xml" value="0.49444444444444446" />
         <entry key="style/src/main/res/drawable/ic_menu_gallery.xml" value="0.5277777777777778" />
         <entry key="style/src/main/res/drawable/ic_search.xml" value="0.44583333333333336" />
+        <entry key="style/src/main/res/drawable/ic_search_gray.xml" value="0.3465" />
         <entry key="style/src/main/res/drawable/trance_rectangle_gray.xml" value="0.5277777777777778" />
         <entry key="style/src/main/res/font/audiowide.xml" value="0.32314814814814813" />
         <entry key="style/src/main/res/font/coiny.xml" value="0.2759259259259259" />

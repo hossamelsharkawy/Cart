@@ -10,10 +10,13 @@ object MyColor {
     val RedLite = Color(0xFFFFC6C1)
     val backgroundColor = Color(0xFFE1EEE2)
     val BottomNavigationBackgroundColor = Color(0xFF0B1423)
-    val BlueDark = Color(0xFF12223D)
+    val BlueDark = Color(0xFF142646)
+    val BlueLite = Color(0xFF1E3968)
     val white = Color(0xFFFCFDFF)
     val green = Color(0xFF26962B)
+    val GreenLite = Color(0x5726962B)
     val red = Color(0xFF9C1C40)
+    val Transparint = Color(0xB4F7F7F7)
 
 }
 

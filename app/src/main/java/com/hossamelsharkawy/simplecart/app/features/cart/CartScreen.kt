@@ -22,11 +22,11 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.annotation.ExperimentalCoilApi
-import com.hossamelsharkawy.simplecart.app.features.products.ProductViewModel
-import com.hossamelsharkawy.simplecart.app.features.products.ProductsEvent
-import com.hossamelsharkawy.simplecart.app.features.products.fakeCartEvent
-import com.hossamelsharkawy.simplecart.app.features.products.fakeProduct
-import com.hossamelsharkawy.simplecart.app.ui.*
+import com.hossamelsharkawy.simplecart.data.source.local.fakeCartEvent
+import com.hossamelsharkawy.simplecart.data.source.local.fakeProduct
+import com.hossamelsharkawy.simplecart.app.ui.component.MyImageLoading
+import com.hossamelsharkawy.simplecart.app.ui.component.MyPrice
+import com.hossamelsharkawy.simplecart.app.ui.component.MyTitle
 import com.hossamelsharkawy.simplecart.app.ui.theme.MyColor
 import com.hossamelsharkawy.simplecart.app.ui.theme.MyTypography
 import com.hossamelsharkawy.simplecart.data.entities.Product
@@ -165,7 +165,7 @@ fun itemInfo(
         horizontalArrangement = Arrangement.Start,
     ) {
 
-        MyImage(
+        MyImageLoading(
             item.getSmallImage(),
             modifier = Modifier
                 .padding(start = 10.dp)

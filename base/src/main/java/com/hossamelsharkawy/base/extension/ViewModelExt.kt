@@ -4,8 +4,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.*
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 
 fun <T> Flow<T>.stateIn(demoViewModel: ViewModel, t: T) = this.stateIn(
@@ -86,7 +88,7 @@ fun <T> Flow<T>.shareInEver(demoViewModel: ViewModel) = this.shareIn(
 inline fun <T> AppCompatActivity.collect(flow: Flow<T>, crossinline block: (T) -> Unit) =
     lifecycleScope.launch {
         flow
-            .flowWithLifecycle(lifecycle =this@collect.lifecycle)
+            .flowWithLifecycle(lifecycle = this@collect.lifecycle)
             .collect { action ->
                 block.invoke(action)
             }
@@ -255,7 +257,6 @@ class ViewModelState<T>(
         }
 
 
-
     suspend fun emit(value: T) {
         _flow.emit(value)
     }
@@ -291,7 +292,7 @@ fun <T> T.vmStateLong(viewModel: ViewModel) =
 
 fun <T> T.vmState(viewModel: ViewModel) = MutableStateFlow(this).stateInShort(viewModel)
 
-fun <T> T.vmStateEver(viewModel: ViewModel) = ViewModelState(this, { it.stateInEver(viewModel) })
+fun <T> T.vmStateEver(viewModel: ViewModel) = ViewModelState(this) { it.stateInEver(viewModel) }
 
 fun <T> T.vmSharedShort(viewModel: ViewModel) =
     ViewModelShared<T>(function = { it.shareInShort(viewModel) })
@@ -312,3 +313,9 @@ fun <T> T.vmSharedShort(viewModel: ViewModel) =
 fun ViewModel.launch(
     block: suspend CoroutineScope.() -> Unit
 ) = viewModelScope.launch(block = block)
+
+fun ViewModel.launchOnIO(
+    block: suspend CoroutineScope.() -> Unit
+) = viewModelScope.launch(context = Dispatchers.IO, block = block)
+
+

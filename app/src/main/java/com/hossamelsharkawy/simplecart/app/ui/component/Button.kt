@@ -1,8 +1,9 @@
-package com.hossamelsharkawy.simplecart.app.ui
+package com.hossamelsharkawy.simplecart.app.ui.component
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.material.Button
 import androidx.compose.material.Icon
 import androidx.compose.material.IconButton
@@ -15,7 +16,8 @@ import androidx.compose.ui.unit.dp
 
 val btnHeight = 40.dp
 val btnWidth = 60.dp
-val btnWidthSmall = 24.dp
+val btnHeightSmall = 30.dp
+val btnWidthSmall = 30.dp
 
 @Composable
 fun MyIconButton(
@@ -48,7 +50,7 @@ fun MyIconButtonSmall(
 ) {
     IconButton(
         modifier = Modifier
-            .size(width = btnWidthSmall, height = btnWidthSmall)
+            .width(btnWidthSmall)
             .then(modifier),
         onClick = onClick
     ) {
@@ -57,6 +59,8 @@ fun MyIconButtonSmall(
             "",
             tint = tint,
             modifier = modifier
+
+
             /* .then(
                  modifier.wrapContentHeight(Alignment.Bottom).wrapContentSize(Alignment.Center)
              )*/

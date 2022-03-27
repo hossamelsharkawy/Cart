@@ -1,8 +1,8 @@
 package com.hossamelsharkawy.simplecart.data.entities
 
 import androidx.compose.runtime.mutableStateOf
-import com.hossamelsharkawy.simplecart.app.features.products.getBaseImageUrl
-import com.hossamelsharkawy.simplecart.app.features.products.kiloUnit
+import com.hossamelsharkawy.simplecart.data.source.local.getBaseImageUrl
+import com.hossamelsharkawy.simplecart.data.source.local.kiloUnit
 import java.io.Serializable
 
 typealias Products = List<Product>
@@ -40,10 +40,10 @@ data class Product(
 
     private fun getImage(size: Int) = getBaseImageUrl(size).plus(image)
 
-    fun getLargeImage() = getImage(1200)
+    fun getLargeImage() = getImage(40000)
 
     //fun getLargeImage() = ""
-    fun getSmallImage() = getImage(150)
+    fun getSmallImage() = getImage(100)
     fun priceString() = "$price LE"
 }
 

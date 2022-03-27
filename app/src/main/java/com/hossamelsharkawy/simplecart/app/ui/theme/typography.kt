@@ -48,6 +48,7 @@ object MyFont{
 private val fontSize1 = 13.sp
 private val fontSize2 = 15.sp
 private val fontSize3 = 19.sp
+private val fontSize4 = 40.sp
 private val fontSize6 = 30.sp
 
 val MyTypography = Typography(
@@ -80,9 +81,11 @@ val MyTypography = Typography(
         ),
     h4 = TextStyle(
         fontFamily = MyFont.Cairo,
-        fontSize = fontSize1,
-        fontWeight = FontWeight.SemiBold,
-        //   lineHeight = 37.sp
+        fontSize = fontSize4,
+        color =MyColor.BlueDark,
+
+        fontWeight = FontWeight.Medium,
+           lineHeight = 1.sp
     ),
     h5 = TextStyle(
         fontFamily = MyFont.Cairo,

@@ -1,6 +1,6 @@
 package com.hossamelsharkawy.simplecart.domain.usecases
 
-import com.hossamelsharkawy.simplecart.app.features.products.FruitsCategory
+import com.hossamelsharkawy.simplecart.data.source.local.FruitsCategory
 import com.hossamelsharkawy.simplecart.data.entities.CartItem
 import com.hossamelsharkawy.simplecart.data.entities.Product
 import com.hossamelsharkawy.simplecart.domain.ICartRepository

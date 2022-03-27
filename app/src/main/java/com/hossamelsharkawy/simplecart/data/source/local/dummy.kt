@@ -1,10 +1,9 @@
-package com.hossamelsharkawy.simplecart.app.features.products
+package com.hossamelsharkawy.simplecart.data.source.local
 
 import com.hossamelsharkawy.simplecart.app.features.cart.CartEvent
 import com.hossamelsharkawy.simplecart.data.entities.Category
 import com.hossamelsharkawy.simplecart.data.entities.Product
 import com.hossamelsharkawy.simplecart.data.entities.Unit
-import com.hossamelsharkawy.simplecart.data.source.local.Images
 
 /*________________________________________________________________________________*/
 
@@ -108,7 +107,7 @@ val fakeProducts2 = arrayListOf<Product>().apply {
 
     add(
         Product(
-            id = 40,
+            id = 140,
             title = "Strawberries",
             image = Images.Strawberries,
             price = "50.00",
@@ -118,7 +117,7 @@ val fakeProducts2 = arrayListOf<Product>().apply {
 
     add(
         Product(
-            id = 41,
+            id = 141,
             title = "Anjou Pears",
             image = Images.AnjouPears,
             price = "50.00",
@@ -128,7 +127,7 @@ val fakeProducts2 = arrayListOf<Product>().apply {
 
     add(
         Product(
-            id = 42,
+            id = 142,
             title = "Candy Grapes",
             image = Images.CandyGrapes,
             price = "50.00",
@@ -137,7 +136,7 @@ val fakeProducts2 = arrayListOf<Product>().apply {
     )
     add(
         Product(
-            id = 43,
+            id = 143,
             title = "Red Grapes",
             image = Images.RedGrapes,
             price = "50.00",
@@ -203,7 +202,7 @@ val fakeProducts2 = arrayListOf<Product>().apply {
 
     add(
         Product(
-            id = 55,
+            id = 155,
             title = "Green Apple",
             image = Images.GreenApple,
             price = "50.00",
@@ -494,6 +493,217 @@ val fakeProducts2 = arrayListOf<Product>().apply {
             image = Images.Eggplant,
             price = "50.00",
             category = VegetablesCategory,
+        )
+    )
+
+    add(
+        Product(
+            id = 37,
+            title = "Ginger Root",
+            image = Images.GingerRoot,
+            price = "50.00",
+            category = VegetablesCategory,
+        )
+    )
+
+    add(
+        Product(
+            id = 38,
+            title = "Yellow Peach",
+            image = Images.YellowPeach,
+            price = "15.00",
+            category = FruitsCategory,
+        )
+    )
+
+    add(
+        Product(
+            id = 39,
+            title = "Fillet",
+            image = Images.Fillet,
+            price = "20.00",
+            category = FishCategory,
+        )
+    )
+
+    add(
+        Product(
+            id = 40,
+            title = "Snapper Fillet",
+            image = Images.SnapperFillet,
+            price = "20.00",
+            category = FishCategory,
+        )
+    )
+
+
+    add(
+        Product(
+            id = 41,
+            title = "Sole Fillet",
+            image = Images.SoleFillet,
+            price = "12.00",
+            category = FishCategory,
+        )
+    )
+
+    add(
+        Product(
+            id = 42,
+            title = "Shrimp",
+            image = Images.Shrimp,
+            price = "120.00",
+            category = FishCategory,
+        )
+    )
+
+    add(
+        Product(
+            id = 43,
+            title = "Steak",
+            image = Images.Steak,
+            price = "18.00",
+            category = MeatCategory,
+        )
+    )
+
+
+    add(
+        Product(
+            id = 44,
+            title = "Ribeye Steak",
+            image = Images.RibeyeSteak,
+            price = "150.00",
+            category = MeatCategory,
+        )
+    )
+    add(
+        Product(
+            id = 45,
+            title = "Beef Stew Meat",
+            image = Images.BeefStewMeat,
+            price = "160.00",
+            category = MeatCategory,
+        )
+    )
+    add(
+        Product(
+            id = 46,
+            title = "Beef Chuck Roast",
+            image = Images.BeefChuckRoast,
+            price = "120.00",
+            category = MeatCategory,
+        )
+    )
+
+    add(
+        Product(
+            id = 47,
+            title = "Lamb Rib Chops",
+            image = Images.LambRibChops,
+            price = "110.00",
+            category = MeatCategory,
+        )
+    )
+
+    add(
+        Product(
+            id = 48,
+            title = "Lamb Stew Meat",
+            image = Images.LambStewMeat,
+            price = "110.00",
+            category = MeatCategory,
+        )
+    )
+
+    add(
+        Product(
+            id = 49,
+            title = "Lamb Bone Leg",
+            image = Images.LambBoneLeg,
+            price = "130.00",
+            category = MeatCategory,
+        )
+    )
+
+    add(
+        Product(
+            id = 50,
+            title = "Ground Beef",
+            image = Images.GroundBeef,
+            price = "110.00",
+            category = MeatCategory,
+        )
+    )
+
+    add(
+        Product(
+            id = 51,
+            title = "Beef Liver",
+            image = Images.BeefLiver,
+            price = "800.00",
+            category = MeatCategory,
+        )
+    )
+
+    add(
+        Product(
+            id = 52,
+            title = "Whole Chicken",
+            image = Images.WholeChicken,
+            price = "88.00",
+            category = ChickenCategory,
+        )
+    )
+
+
+    add(
+        Product(
+            id = 53,
+            title = "Chicken Breast",
+            image = Images.ChickenBreast,
+            price = "88.00",
+            category = ChickenCategory,
+        )
+    )
+
+    add(
+        Product(
+            id = 54,
+            title = "Roasted Chicken",
+            image = Images.WholeRoastedChicken,
+            price = "88.00",
+            category = ChickenCategory,
+        )
+    )
+
+    add(
+        Product(
+            id = 55,
+            title = "Legs Chicken",
+            image = Images.WholeChickenLegs,
+            price = "88.00",
+            category = ChickenCategory,
+        )
+    )
+
+    add(
+        Product(
+            id = 56,
+            title = "Chicken Liver",
+            image = Images.ChickenLiver,
+            price = "50.00",
+            category = ChickenCategory,
+        )
+    )
+
+    add(
+        Product(
+            id = 57,
+            title = "Chicken Hearts",
+            image = Images.ChickenHearts,
+            price = "44.00",
+            category = ChickenCategory,
         )
     )
 

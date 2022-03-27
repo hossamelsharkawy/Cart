@@ -1,6 +1,9 @@
 package com.hossamelsharkawy.simplecart.app.features.home
 
 
+import androidx.compose.animation.*
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.core.updateTransition
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
@@ -79,7 +82,6 @@ fun BottomNavigation(
                 alwaysShowLabel = true,
                 selected = currentRoute == item.screen_route,
                 onClick = {
-
                     navController.navigate(item.screen_route) {
                         navController.graph.startDestinationRoute?.let { screen_route ->
                             popUpTo(screen_route) {
@@ -113,23 +115,65 @@ fun CartNavItem(item: BottomNavItem.Cart, itemsCount: String) {
     }
 }
 
+@OptIn(ExperimentalAnimationApi::class)
 @Composable
 fun CartCount(itemsCount: String, modifier: Modifier) {
-    Text(
-        modifier = modifier
-            //.shadow(elevation = 1.dp ,shape = RoundedCornerShape(1))
-            .padding(
-                start = 40.dp
-            )
 
-        /* .border(
-             1.dp,
-             color = Color(0xFFFFFFFF),
-            // shape = RoundedCornerShape(65.dp)
-         )*/,
-        text = itemsCount,
-        style = MyTypography.overline,
-        color = MyColor.RedLite,
-        fontSize = 20.sp
+    MyAnimatedContentCount(itemsCount) { targetCount ->
+        Text(
+            modifier = modifier
+                //.shadow(elevation = 1.dp ,shape = RoundedCornerShape(1))
+                .padding(
+                    start = 40.dp
+                )
+
+            /* .border(
+                 1.dp,
+                 color = Color(0xFFFFFFFF),
+                // shape = RoundedCornerShape(65.dp)
+             )*/,
+            text = targetCount,
+            style = MyTypography.overline,
+            color = MyColor.RedLite,
+            fontSize = 20.sp
+        )
+
+    }
+
+}
+
+@ExperimentalAnimationApi
+@Composable
+fun  MyAnimatedContentCount(
+    targetState: String,
+    modifier: Modifier = Modifier,
+    transitionSpec: AnimatedContentScope<String>.() -> ContentTransform = {
+        if (targetState > initialState) {
+            // If the target number is larger, it slides up and fades in
+            // while the initial (smaller) number slides up and fades out.
+            slideInVertically { height -> height } + fadeIn() with
+                    slideOutVertically { height -> -height } + fadeOut()
+        } else {
+            // If the target number is smaller, it slides down and fades in
+            // while the initial number slides down and fades out.
+            slideInVertically { height -> -height } + fadeIn() with
+                    slideOutVertically { height -> height } + fadeOut()
+        }.using(
+            // Disable clipping since the faded slide-in/out should
+            // be displayed out of bounds.
+            SizeTransform(clip = false)
+        )
+    },
+    contentAlignment: Alignment = Alignment.TopStart,
+    content: @Composable() AnimatedVisibilityScope.(targetState: String) -> Unit
+) {
+    val transition = updateTransition(targetState = targetState, label = "AnimatedContent")
+    transition.AnimatedContent(
+        modifier,
+        transitionSpec,
+        contentAlignment,
+        content = content
     )
 }
+
+

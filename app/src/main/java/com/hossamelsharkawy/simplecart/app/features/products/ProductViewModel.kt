@@ -2,9 +2,9 @@ package com.hossamelsharkawy.simplecart.app.features.products
 
 import androidx.compose.runtime.*
 import androidx.compose.runtime.snapshots.SnapshotStateList
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
-import com.hossamelsharkawy.base.extension.launch
-import com.hossamelsharkawy.base.extension.vmStateShort
+import com.hossamelsharkawy.base.extension.*
 import com.hossamelsharkawy.simplecart.app.UIRouter
 import com.hossamelsharkawy.simplecart.app.features.cart.CartStates
 import com.hossamelsharkawy.simplecart.app.features.products.ProductsMapper.toGridItems
@@ -17,6 +17,11 @@ import com.hossamelsharkawy.simplecart.domain.ICartRepository
 import com.hossamelsharkawy.simplecart.domain.IProductsRepository
 import com.hossamelsharkawy.simplecart.domain.usecases.*
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 
@@ -27,10 +32,10 @@ class ProductViewModel @Inject internal constructor(
     val uIRoute: UIRouter
 ) : ViewModel() {
 
-    val dataLoading = true.vmStateShort(this)
 
     var itemsState = mutableStateListOf<Product>()
         private set
+
 
     var itemsByCategoryState = mutableStateMapOf<Category, SnapshotStateList<Product>>()
         private set
@@ -53,18 +58,43 @@ class ProductViewModel @Inject internal constructor(
         launch { uIRoute.navToProductInfo(product) }
     }
 
+    var rowCountVM = 1.vmSharedShort(this)
+
+    var dataLoading = mutableStateOf(false)
+
+
     init {
-        fetchProducts()
+        launch {
+            rowCountVM
+                .flow
+                .distinctUntilChanged()
+                .collectLatest {
+                    dataLoading.value = true
+                    delay(200)
+                    fetchProducts(it)
+                    delay(200)
+                    dataLoading.value = false
+                }
+
+        }
+
+
     }
 
-    private fun fetchProducts() = launch {
-        dataLoading.emit(true)
-        showAllProducts(productsRepository, cartRepository)
-            .also { itemsState.swapList(it) }
-            .also { itemsByCategoryState.swapList(it.toMapByCategory()) }
-            .also { itemsByCategoryStateFlat.swapList(it.toGridItems(3)) }
-            .also { dataLoading.value = false }
-            .also { fetchCartItems() }
+    fun setRowCount(rowCount: Int) = launch {
+        rowCountVM.emit(rowCount)
+    }
+
+
+    private suspend fun fetchProducts(rowCount: Int) {
+        withContext(Dispatchers.IO) {
+            showAllProducts(productsRepository, cartRepository)
+                .also { itemsState.swapList(it) }
+                .also { itemsByCategoryState.swapList(it.toMapByCategory()) }
+                .also { itemsByCategoryStateFlat.swapList(it.toGridItems(rowCount)) }
+                //  .also { dataLoading.value = false }
+                .also { fetchCartItems() }
+        }
     }
 
     private fun fetchCartItems() = launch {
@@ -88,6 +118,7 @@ class ProductViewModel @Inject internal constructor(
     private fun Product.update() {
         itemsByCategoryState[category]?.refresh()
         itemsByCategoryStateFlat.refresh()
+        itemsState.refresh()
     }
 
     fun addToCart(product: Product) = launch {
@@ -123,7 +154,9 @@ class ProductViewModel @Inject internal constructor(
     fun clearCart() = launch {
         clearCart(cartRepository)
             .also { fetchCartItems() }
-            .let { fetchProducts() }
+            .let {
+                //fetchProducts()
+            }
     }
 }
 

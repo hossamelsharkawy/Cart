@@ -52,9 +52,11 @@ fun MyRowStart(
 
 @Composable
 fun MyColumnCenter(
+    modifier: Modifier = Modifier,
     content: @Composable ColumnScope.() -> Unit
 ) {
     Column(
+        modifier = modifier,
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally,
         content = content
